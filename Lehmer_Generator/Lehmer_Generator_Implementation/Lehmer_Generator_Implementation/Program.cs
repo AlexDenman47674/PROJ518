@@ -30,7 +30,7 @@ namespace Lehmer_Generator_Implementation
         public static void IntegerVer1(ref List<double>Values)
         {
             //Integer Versions of the algorithm use an integer based seed instead of a double or float
-            //This algorithm will produce values between 1 and -1
+            //All values are between 1 and -1
 
             //Empties the list before generation
             Values.Clear();
