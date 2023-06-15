@@ -44,6 +44,15 @@ namespace Lehmer_Generator_Implementation
                 Console.WriteLine(ReturnValues[i]);
             }
 
+            Console.WriteLine("Real Version 2");
+
+            //Real Version 2
+            RealVer2(ref ReturnValues);
+            for (int i = 0; i <= ReturnValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnValues[i]);
+            }
+
             Console.ReadLine();
         }
 
@@ -138,6 +147,46 @@ namespace Lehmer_Generator_Implementation
 
                 //Again due to the nature of int variables, conversion must be made to double to correctly store results
                 Values.Add(Convert.ToDouble(seed) / M);
+            }
+        }
+
+        public static void RealVer2(ref List<double>Values)
+        {
+            //All values are between 1 and 0
+            Values.Clear();
+
+
+            //Double variable types used for both variables and constants
+            const double A = 48271.0;
+            const double M = 2147483647.0;
+
+            const double Q = M / A;
+            const double R = M % A;
+
+            double lo = 0;
+            double hi = 0;
+            double test = 0;
+
+            double seed = 30102000;
+
+            //100 iterations are used for generation
+            for (int i = 1; i <= 100; i++)
+            {
+                hi = Math.Truncate(seed / Q);
+                lo = seed - Q * hi;
+                test = A * lo - R * hi;
+
+                //As with Integer Version 2, an if/else clause is used to ensure that the test value can be correctly represented
+                if (test > 0.0)
+                {
+                    seed = test;
+                }
+                else
+                {
+                    seed = test + M;
+                }
+
+                Values.Add(seed / M);
             }
         }
     }
