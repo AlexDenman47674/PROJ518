@@ -34,6 +34,16 @@ namespace Lehmer_Generator_Implementation
             {
                 Console.WriteLine(ReturnValues[i]);
             }
+
+            Console.WriteLine("Integer Version 2");
+
+            //Integer Version 2
+            IntegerVer2(ref ReturnValues);
+            for (int i = 0; i <= ReturnValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnValues[i]);
+            }
+
             Console.ReadLine();
         }
 
@@ -87,6 +97,47 @@ namespace Lehmer_Generator_Implementation
                 temp = A * seed;
                 seed = temp - M * Math.Truncate(temp / M);
                 Values.Add(seed / M);
+            }
+        }
+
+        public static void IntegerVer2(ref List<double>Values)
+        {
+            //All values are between 10 and -10
+            Values.Clear();
+
+            const int A = 48271;
+            const int M = 214783647;
+            int seed = 30102000;
+
+            //Q and R are combinations of A and M that are used in the seed and test modification process
+            const int Q = M / A; //Q is the result of M div A
+            const int R = M % A; //R is the result of M mod A
+
+            int lo = 0;
+            int hi = 0;
+            int test = 0;
+
+            for (int i = 1; i <= 100; i++)
+            {
+                //Q relates to the modification of the base seed into a high and low value
+                hi = seed / Q;
+                lo = seed % Q;
+
+                //R relates to the creation of test, based on further modification of hi and lo
+                test = A * lo - R * hi;
+
+                //If statement used to ensure that test will never be a value that cannot be correctly represented with 32 bits
+                if (test > 0)
+                {
+                    seed = test;
+                }
+                else
+                {
+                    seed = test + M;
+                }
+
+                //Again due to the nature of int variables, conversion must be made to double to correctly store results
+                Values.Add(Convert.ToDouble(seed) / M);
             }
         }
     }
