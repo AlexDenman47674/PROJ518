@@ -20,7 +20,17 @@ namespace Lehmer_Generator_Implementation
 
             //Integer Version 1
             IntegerVer1(ref ReturnValues);
+            Console.WriteLine("Integer Version 1");
             for (int i = 0; i <= ReturnValues.Count()-1; i++)
+            {
+                Console.WriteLine(ReturnValues[i]);
+            }
+
+            Console.WriteLine("Real Version 1");
+
+            //Real Version 1
+            RealVer1(ref ReturnValues);
+            for (int i = 0; i <= ReturnValues.Count() - 1; i++)
             {
                 Console.WriteLine(ReturnValues[i]);
             }
@@ -51,6 +61,30 @@ namespace Lehmer_Generator_Implementation
 
                 //Since an int seed is used, conversion must take place otherwise all decimals are truncated to 0 before storage
                 Values.Add((Convert.ToDouble(seed) / M));
+            }
+        }
+
+        public static void RealVer1(ref List<double>Values)
+        {
+            //Real Versions of the algorithm use a double type variables
+            //All values are between 1 and 0
+
+            //Empties the list before generation
+            Values.Clear();
+
+            //As before constant values A and M are created
+            const double A = 48271.0;
+            const double M = 2147483647.0;
+
+            double seed = 30102000.0;
+            double temp = 0.0;
+
+            //100 Generations are stored within ReturnValues
+            for (int i = 1; i <= 100; i++)
+            {
+                temp = A * seed;
+                seed = temp - M * Math.Truncate(temp / M);
+                Values.Add(seed / M);
             }
         }
     }
