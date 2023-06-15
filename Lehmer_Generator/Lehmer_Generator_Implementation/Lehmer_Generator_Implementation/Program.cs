@@ -73,9 +73,11 @@ namespace Lehmer_Generator_Implementation
             Values.Clear();
 
             //As before constant values A and M are created
+            //However double is used in place of int
             const double A = 48271.0;
             const double M = 2147483647.0;
 
+            //Double is also used for both the seed and temp values
             double seed = 30102000.0;
             double temp = 0.0;
 
