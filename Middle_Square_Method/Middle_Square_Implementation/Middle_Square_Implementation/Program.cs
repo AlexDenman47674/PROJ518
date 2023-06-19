@@ -12,13 +12,15 @@ namespace Middle_Square_Implementation
         {
             //The Middle Square Method works by multiplying a number by itself then selecting n digits from the result to be the generated value
             //This value is then multiplied by itself to continue the algorithm
+            //Values generated are between 1 and 100
 
             //Set up variables before generation
             //A shorter seed value was required as multiplication of 30102000 led to an overflow error
-            const int seed = 3010200;
+            const int seed = 301020;
             int value = 0;
             int valueLength = 0;
             int valueMiddle = 0;
+            string valueString = "";
             List<int> ReturnValues = new List<int>();
 
             value = seed;
@@ -30,15 +32,22 @@ namespace Middle_Square_Implementation
 
                 //Middle values cannot be extracted from even length squares
                 //Padding using 0 to make the length odd is required for successful generation
+                valueString = Convert.ToString(value);
+
                 if (valueLength % 2 == 0)
                 {
-                    value = value * 10;
-                    valueLength = value.ToString().Length;
+                    valueString = valueString.Insert(0, "0");
+                    valueLength = valueString.Length;
                 }
 
-                valueMiddle = Convert.ToInt32(value.ToString().Substring((valueLength / 2) - 1, 3));
+                //Using substrings, the middle 2 digits of the valueString variable can be obtained
+                valueMiddle = Convert.ToInt32(valueString.Substring((valueLength / 2) - 1, 2));
 
                 Console.WriteLine(valueMiddle);
+
+                //All generated values are stored in the ReturnValues list
+                //On inspection of the outputs given, the flaws of this algorithm become clear
+                //Repetitions begin with this seed after 5 iterations
                 ReturnValues.Add(valueMiddle);
 
                 value = valueMiddle;
