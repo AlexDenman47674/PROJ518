@@ -47,7 +47,7 @@ namespace Middle_Square_Implementation
 
                 //All generated values are stored in the ReturnValues list
                 //On inspection of the outputs given, the flaws of this algorithm become clear
-                //Repetitions begin with this seed after 5 iterations
+                //Repetitions begin with this seed after just 9 iterations
                 ReturnValues.Add(valueMiddle);
 
                 value = valueMiddle;
