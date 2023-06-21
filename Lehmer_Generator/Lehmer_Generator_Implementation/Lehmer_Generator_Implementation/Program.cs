@@ -22,6 +22,12 @@ namespace Lehmer_Generator_Implementation
 
             //Integer Version 1
             IntegerVer1(ref ReturnValues);
+
+            //Output to JSON
+            string Intjson1 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/Lehmer_Generator/Lehmer_Generator_Output/IntegerVer1Output.json", Intjson1);
+
             Console.WriteLine("Integer Version 1");
             for (int i = 0; i <= ReturnValues.Count()-1; i++)
             {
@@ -32,6 +38,12 @@ namespace Lehmer_Generator_Implementation
 
             //Real Version 1
             RealVer1(ref ReturnValues);
+
+            //Output to JSON
+            string Realjson1 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/Lehmer_Generator/Lehmer_Generator_Output/RealVer1Output.json", Realjson1);
+
             for (int i = 0; i <= ReturnValues.Count() - 1; i++)
             {
                 Console.WriteLine(ReturnValues[i]);
@@ -41,6 +53,12 @@ namespace Lehmer_Generator_Implementation
 
             //Integer Version 2
             IntegerVer2(ref ReturnValues);
+
+            //Output to JSON
+            string Intjson2 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/Lehmer_Generator/Lehmer_Generator_Output/IntegerVer2Output.json", Intjson2);
+
             for (int i = 0; i <= ReturnValues.Count() - 1; i++)
             {
                 Console.WriteLine(ReturnValues[i]);
@@ -50,6 +68,12 @@ namespace Lehmer_Generator_Implementation
 
             //Real Version 2
             RealVer2(ref ReturnValues);
+
+            //Output to JSON
+            string Realjson2 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/Lehmer_Generator/Lehmer_Generator_Output/RealVer2Output.json", Realjson2);
+
             for (int i = 0; i <= ReturnValues.Count() - 1; i++)
             {
                 Console.WriteLine(ReturnValues[i]);
