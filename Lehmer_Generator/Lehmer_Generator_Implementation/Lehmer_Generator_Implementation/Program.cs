@@ -73,8 +73,8 @@ namespace Lehmer_Generator_Implementation
             //The specific base seed used for testing is the authors date of birth (30/10/2000) as it provided a value large enough for authentic generation
             int seed = 30102000;
 
-            //100 Generations are stored within ReturnValues
-            for (int i = 1; i <= 100; i++)
+            //500 Generations are stored within ReturnValues
+            for (int i = 1; i <= 500; i++)
             {
                 seed = (A * seed) % M;
 
@@ -100,8 +100,8 @@ namespace Lehmer_Generator_Implementation
             double seed = 30102000.0;
             double temp = 0.0;
 
-            //100 Generations are stored within ReturnValues
-            for (int i = 1; i <= 100; i++)
+            //500 Generations are stored within ReturnValues
+            for (int i = 1; i <= 500; i++)
             {
                 temp = A * seed;
                 seed = temp - M * Math.Truncate(temp / M);
@@ -126,7 +126,7 @@ namespace Lehmer_Generator_Implementation
             int hi = 0;
             int test = 0;
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 500; i++)
             {
                 //Q relates to the modification of the base seed into a high and low value
                 hi = seed / Q;
@@ -169,8 +169,8 @@ namespace Lehmer_Generator_Implementation
 
             double seed = 30102000;
 
-            //100 iterations are used for generation
-            for (int i = 1; i <= 100; i++)
+            //500 iterations are used for generation
+            for (int i = 1; i <= 500; i++)
             {
                 hi = Math.Truncate(seed / Q);
                 lo = seed - Q * hi;
