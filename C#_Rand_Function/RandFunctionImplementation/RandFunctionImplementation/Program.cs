@@ -32,6 +32,11 @@ namespace RandFunctionImplementation
                 Console.WriteLine(ReturnValues[i]);
             }
 
+            //Writes data to JSON
+            string Randjson1 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/RandVer1.json", Randjson1);
+
             //Implementation 2 of the Random function
             RandImplementation2(ref ReturnValues);
 
@@ -42,16 +47,28 @@ namespace RandFunctionImplementation
                 Console.WriteLine(ReturnValues[i]);
             }
 
+            //Writes data to JSON
+            string Randjson2 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/RandVer2.json", Randjson2);
+
             //Implementation 3 of the Random function
 
             Console.WriteLine("Implementation 3");
 
             byte[] ByteValues = RandImplementation3(500);
+            ReturnValues.Clear();
 
             for (int i = 0; i <= ByteValues.Count() - 1; i++)
             {
                 Console.WriteLine(ByteValues[i]);
+                ReturnValues.Add(ByteValues[i]);
             }
+
+            //Writes data to JSON
+            string Randjson3 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/RandVer3.json", Randjson3);
 
             Console.ReadLine();
         }
