@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Newtonsoft.Json;
+
 namespace Middle_Square_Implementation
 {
     class Program
@@ -25,7 +27,7 @@ namespace Middle_Square_Implementation
 
             value = seed;
             //Also to keep results fair, all generators use the same number of iterations
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 500; i++)
             {
                 value = value * value;
                 valueLength = value.ToString().Length;
