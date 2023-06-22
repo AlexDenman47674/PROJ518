@@ -55,6 +55,11 @@ namespace Middle_Square_Implementation
                 value = valueMiddle;
             }
 
+            //Writes data to JSON
+            string json = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/Middle_Square_Method/Middle_Square_Output/MiddleSquare.json", json);
+
             Console.ReadLine();
         }
     }
