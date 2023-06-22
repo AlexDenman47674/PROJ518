@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using System.Security.Cryptography;
 
+using Newtonsoft.Json;
+
 namespace RandFunctionImplementation
 {
     class Program
@@ -44,7 +46,7 @@ namespace RandFunctionImplementation
 
             Console.WriteLine("Implementation 3");
 
-            byte[] ByteValues = RandImplementation3(100);
+            byte[] ByteValues = RandImplementation3(500);
 
             for (int i = 0; i <= ByteValues.Count() - 1; i++)
             {
@@ -64,7 +66,7 @@ namespace RandFunctionImplementation
             //By providing no seed value, the rand variable will generate a seed based on the current time
             Random rand = new Random();
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 500; i++)
             {
                 //Values between 0 and 100 are generated
                 Values.Add(rand.Next(100));
@@ -80,7 +82,7 @@ namespace RandFunctionImplementation
 
             Random rand = new Random(30102000);
 
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 500; i++)
             {
                 //Values between 0 and 100 are generated
                 Values.Add(rand.Next(100));
