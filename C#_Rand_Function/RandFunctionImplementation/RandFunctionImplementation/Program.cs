@@ -70,6 +70,17 @@ namespace RandFunctionImplementation
 
             System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/RandVer3.json", Randjson3);
 
+
+            //Simulation 1 of a coin flip
+            RandCoinSimulation1(ref ReturnValues);
+
+            Console.WriteLine("Coin Simulation 1");
+
+            for (int i = 0; i <= ReturnValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnValues[i]);
+            }
+
             Console.ReadLine();
         }
 
@@ -120,6 +131,22 @@ namespace RandFunctionImplementation
                 generator.GetBytes(values);
 
                 return values;
+            }
+        }
+
+        static void RandCoinSimulation1(ref List<double> Values)
+        {
+            //This function operates the same as the implementation 1 function
+            //However the .next() values are adjusted to 0 (heads) and 1 (tails)
+
+            Values.Clear();
+
+            Random rand = new Random();
+
+            for (int i = 1; i <= 500; i++)
+            {
+                //Values between 0 and 1 are generated
+                Values.Add(rand.Next(2));
             }
         }
     }
