@@ -81,6 +81,26 @@ namespace RandFunctionImplementation
                 Console.WriteLine(ReturnValues[i]);
             }
 
+            //Writes data to JSON
+            string Coinjson1 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CoinSim1.json", Coinjson1);
+
+            //Simulation 2 of a coin flip
+            RandCoinSimulation2(ref ReturnValues);
+
+            Console.WriteLine("Coin Simulation 2");
+
+            for (int i = 0; i <= ReturnValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnValues[i]);
+            }
+
+            //Writes data to JSON
+            string Coinjson2 = JsonConvert.SerializeObject(ReturnValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CoinSim2.json", Coinjson2);
+
             Console.ReadLine();
         }
 
@@ -142,6 +162,22 @@ namespace RandFunctionImplementation
             Values.Clear();
 
             Random rand = new Random();
+
+            for (int i = 1; i <= 500; i++)
+            {
+                //Values between 0 and 1 are generated
+                Values.Add(rand.Next(2));
+            }
+        }
+
+        static void RandCoinSimulation2(ref List<double> Values)
+        {
+            //This function operates the same as the simulation 1 function
+            //However the standard seed 30/10/2000 is used in place of the system generated seed
+
+            Values.Clear();
+
+            Random rand = new Random(30102000);
 
             for (int i = 1; i <= 500; i++)
             {
