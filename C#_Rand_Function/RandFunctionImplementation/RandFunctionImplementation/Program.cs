@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 using Newtonsoft.Json;
+using System.IO;
 
 namespace RandFunctionImplementation
 {
@@ -101,6 +102,9 @@ namespace RandFunctionImplementation
 
             System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CoinSim2.json", Coinjson2);
 
+            //Simulation 1 of a card draw
+            RandCardSim1(ref ReturnValues);
+
             Console.ReadLine();
         }
 
@@ -183,6 +187,27 @@ namespace RandFunctionImplementation
             {
                 //Values between 0 and 1 are generated
                 Values.Add(rand.Next(2));
+            }
+        }
+
+        static void RandCardSim1(ref List<double> Values)
+        {
+            //This function operates the same as the implementation 1 function
+            //however the .next() values are adjusted after each generation as if picking from a deck of cards
+            //Originally the values are generated between 0 and 51 simulating a standard deck of 52 cards
+            //Each card is bought into a 'Deck' list by reading from a deck JSON file
+            //As cards are being removed from the 'Deck' the .next() max value decreases
+
+            Values.Clear();
+
+            //Creates the Deck list
+            List<string> Deck = new List<string>();
+
+            //Reads the Deck JSON into the 'Deck' list
+            using (StreamReader r = new StreamReader("D:/Github/PROJ518/C#_Rand_Function/RandFunctionInput/Deck.json"))
+            {
+                string json = r.ReadToEnd();
+                Deck = JsonConvert.DeserializeObject<List<string>>(json);
             }
         }
     }
