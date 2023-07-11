@@ -106,6 +106,33 @@ namespace RandFunctionImplementation
             //Simulation 1 of a card draw
             RandCardSim1(ref ReturnCardValues);
 
+            Console.WriteLine("Cards Simulation 1");
+
+            for (int i = 0; i <= ReturnCardValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnCardValues[i]);
+            }
+
+            //Writes data to JSON
+            string Cardjson1 = JsonConvert.SerializeObject(ReturnCardValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CardSim1.json", Cardjson1);
+
+            //Simulation 2 of a card draw
+            RandCardSim1(ref ReturnCardValues);
+
+            Console.WriteLine("Cards Simulation 2");
+
+            for (int i = 0; i <= ReturnCardValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnCardValues[i]);
+            }
+
+            //Writes data to JSON
+            string Cardjson2 = JsonConvert.SerializeObject(ReturnCardValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CardSim2.json", Cardjson2);
+
             Console.ReadLine();
         }
 
@@ -218,6 +245,37 @@ namespace RandFunctionImplementation
             for (int i = 0; i <= 51; i++)
             {
                 ChosenCard = rand.Next(Deck.Count()-1);
+                Values.Add(Deck[ChosenCard]);
+
+                //Once a card is added, it must be removed from the deck
+                Deck.RemoveAt(ChosenCard);
+            }
+        }
+
+        static void RandCardSim2(ref List<string> Values)
+        {
+            //This function operates the same as simulation 1
+            //however the control seed is used
+
+            Values.Clear();
+
+            //Creates the Deck list
+            List<string> Deck = new List<string>();
+
+            Random rand = new Random(30102000);
+
+            int ChosenCard;
+
+            //Reads the Deck JSON into the 'Deck' list
+            using (StreamReader r = new StreamReader("D:/Github/PROJ518/C#_Rand_Function/RandFunctionInput/Deck.json"))
+            {
+                string json = r.ReadToEnd();
+                Deck = JsonConvert.DeserializeObject<List<string>>(json);
+            }
+
+            for (int i = 0; i <= 51; i++)
+            {
+                ChosenCard = rand.Next(Deck.Count() - 1);
                 Values.Add(Deck[ChosenCard]);
 
                 //Once a card is added, it must be removed from the deck
