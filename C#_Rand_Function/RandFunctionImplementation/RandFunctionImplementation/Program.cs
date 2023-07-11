@@ -20,8 +20,9 @@ namespace RandFunctionImplementation
             //For a closer match to true random, the file format used for this algorithm is a .NET framework
             //In addition, the Random function provided by C# also allows for an inputted seed that will be used in place of the system clock
 
-            //Declares the list to store generated values
+            //Declares the lists to store generated values
             List<double> ReturnValues = new List<double>();
+            List<string> ReturnCardValues = new List<string>();
             
             //Implementation 1 of the Random function
             RandImplementation1(ref ReturnValues);
@@ -103,7 +104,7 @@ namespace RandFunctionImplementation
             System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CoinSim2.json", Coinjson2);
 
             //Simulation 1 of a card draw
-            RandCardSim1(ref ReturnValues);
+            RandCardSim1(ref ReturnCardValues);
 
             Console.ReadLine();
         }
@@ -190,7 +191,7 @@ namespace RandFunctionImplementation
             }
         }
 
-        static void RandCardSim1(ref List<double> Values)
+        static void RandCardSim1(ref List<string> Values)
         {
             //This function operates the same as the implementation 1 function
             //however the .next() values are adjusted after each generation as if picking from a deck of cards
@@ -203,11 +204,24 @@ namespace RandFunctionImplementation
             //Creates the Deck list
             List<string> Deck = new List<string>();
 
+            Random rand = new Random();
+
+            int ChosenCard;
+
             //Reads the Deck JSON into the 'Deck' list
             using (StreamReader r = new StreamReader("D:/Github/PROJ518/C#_Rand_Function/RandFunctionInput/Deck.json"))
             {
                 string json = r.ReadToEnd();
                 Deck = JsonConvert.DeserializeObject<List<string>>(json);
+            }
+
+            for (int i = 0; i <= 51; i++)
+            {
+                ChosenCard = rand.Next(Deck.Count()-1);
+                Values.Add(Deck[ChosenCard]);
+
+                //Once a card is added, it must be removed from the deck
+                Deck.RemoveAt(ChosenCard);
             }
         }
     }
