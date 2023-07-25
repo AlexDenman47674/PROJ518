@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Math.Random Function</h2>
+
+<p>Math.floor(Math.random() * 100) + 1) returns a random integer between 1 and 
+100 (both included). The function has been modified to produce 500 iterations</p>
+
+<p>This script is designed to mirror the random number generator provided by Google as both use the Math.random function</p>
+
+<p>Standard JavaScript has no export method to JSON, so instead the array is converted to JSON format using JSON.stringify in console and then manually copied to the output file</p>
+
+<p id="demo"></p>
+
+<p id="output"></p>
+
+
+<script>
+const OutputValues = [];
+for (let i = 1; i <= 500; i++) {
+  
+    OutputValues.push(Math.floor(Math.random() * 100) + 1);
+}
+
+let text = "<ul>";
+for (let j = 0; j <= 499; j++) {
+  text += "<li>" + j + " : " + OutputValues[j] + "</li>";
+}
+text += "</ul>";
+document.getElementById("output").innerHTML = text;
+
+console.log(JSON.stringify(OutputValues));
+
+const CoinSimValues = [];
+for (let i = 1; i <= 500; i++) {
+  
+    CoinSimValues.push(Math.round(Math.random()));
+}
+
+console.log(JSON.stringify(CoinSimValues));
+
+</script>
+
+</body>
+</html>
