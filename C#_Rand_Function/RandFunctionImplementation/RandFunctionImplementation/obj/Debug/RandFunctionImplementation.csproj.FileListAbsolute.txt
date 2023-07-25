@@ -1,0 +1,9 @@
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\bin\Debug\RandFunctionImplementation.exe.config
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\bin\Debug\RandFunctionImplementation.exe
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\bin\Debug\RandFunctionImplementation.pdb
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\obj\Debug\RandFunctionImplementation.csprojAssemblyReference.cache
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\obj\Debug\RandFunctionImplementation.exe
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\obj\Debug\RandFunctionImplementation.pdb
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\bin\Debug\Newtonsoft.Json.dll
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\bin\Debug\Newtonsoft.Json.xml
+D:\Github\PROJ518\C#_Rand_Function\RandFunctionImplementation\RandFunctionImplementation\obj\Debug\RandFunctionImplementation.csproj.CopyComplete
