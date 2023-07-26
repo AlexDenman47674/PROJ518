@@ -5,6 +5,7 @@ install.packages("rjson")
 
 library(RDieHarder)
 library(rjson)
+library(dplyr)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -54,10 +55,10 @@ print(np)
 
 #Counting the frequency of each face
 CDice1 <- as.data.frame(table(CDiceSim1Values))
-print(CDice1Ouput)
+print(CDice1)
 
 CDice2 <- as.data.frame(table(CDiceSim2Values))
-print(CDice2Output)
+print(CDice2)
 
 PDice1 <- as.data.frame(table(PDiceSim1Values))
 print(PDice1)
@@ -73,3 +74,16 @@ print(JSDice)
 
 RealDice <- as.data.frame(table(RealDiceValues))
 print(RealDice)
+
+#Performing the Chi Squared equation
+#The Chi Squared equation: V = ((Yn - np)^2 / np) + ((Yn+1 - np)^2 / np)  + ...
+
+V_CDice1 <- ((CDice1[1, 2] - np)^2 / np) + ((CDice1[2, 2] - np)^2 / np) + ((CDice1[3, 2] - np)^2 / np) + ((CDice1[4, 2] - np)^2 / np) + ((CDice1[5, 2] - np)^2 / np) + ((CDice1[6, 2] - np)^2 / np)
+print(V_CDice1)
+V_CDice2 <- ((CDice2[1, 2] - np)^2 / np) + ((CDice2[2, 2] - np)^2 / np) + ((CDice2[3, 2] - np)^2 / np) + ((CDice2[4, 2] - np)^2 / np) + ((CDice2[5, 2] - np)^2 / np) + ((CDice2[6, 2] - np)^2 / np)
+print(V_CDice2)
+
+#For the C# generations the first method had a V = 1.192 while the second method had a V = 4.024
+
+
+
