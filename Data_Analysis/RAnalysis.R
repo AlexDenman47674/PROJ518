@@ -85,5 +85,11 @@ print(V_CDice2)
 
 #For the C# generations the first method had a V = 1.192 while the second method had a V = 4.024
 
+V_PDice1 <- ((PDice1[1, 2] - np)^2 / np) + ((PDice1[2, 2] - np)^2 / np) + ((PDice1[3, 2] - np)^2 / np) + ((PDice1[4, 2] - np)^2 / np) + ((PDice1[5, 2] - np)^2 / np) + ((PDice1[6, 2] - np)^2 / np)
+print(V_PDice1)
+V_PDice2 <- ((PDice2[1, 2] - np)^2 / np) + ((PDice2[2, 2] - np)^2 / np) + ((PDice2[3, 2] - np)^2 / np) + ((PDice2[4, 2] - np)^2 / np) + ((PDice2[5, 2] - np)^2 / np) + ((PDice2[6, 2] - np)^2 / np)
+print(V_PDice2)
+V_PDice3 <- ((PDice3[1, 2] - np)^2 / np) + ((PDice3[2, 2] - np)^2 / np) + ((PDice3[3, 2] - np)^2 / np) + ((PDice3[4, 2] - np)^2 / np) + ((PDice3[5, 2] - np)^2 / np) + ((PDice3[6, 2] - np)^2 / np)
+print(V_PDice3)
 
-
+#For the Python generations the first method had a v = 3.064 while the second method had a v = 2.536 and the third method had a v = 3.88
