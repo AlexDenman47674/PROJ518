@@ -23,6 +23,7 @@ namespace RandFunctionImplementation
             //Declares the lists to store generated values
             List<double> ReturnValues = new List<double>();
             List<string> ReturnCardValues = new List<string>();
+            List<int> ReturnDiceValues = new List<int>();
             
             //Implementation 1 of the Random function
             RandImplementation1(ref ReturnValues);
@@ -132,6 +133,36 @@ namespace RandFunctionImplementation
             string Cardjson2 = JsonConvert.SerializeObject(ReturnCardValues.ToArray());
 
             System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#CardSim2.json", Cardjson2);
+
+            //Simulation 1 of a dice roll
+            RandDiceRoll1(ref ReturnDiceValues);
+
+            Console.WriteLine("Dice Simulation 1");
+
+            for (int i = 0; i <= ReturnDiceValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnDiceValues[i]);
+            }
+
+            //Writes data to JSON
+            string Dicejson1 = JsonConvert.SerializeObject(ReturnDiceValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#DiceSim1.json", Dicejson1);
+
+            //Simulation 2 of a dice roll
+            RandDiceRoll2(ref ReturnDiceValues);
+
+            Console.WriteLine("Dice Simulation 2");
+
+            for (int i = 0; i <= ReturnDiceValues.Count() - 1; i++)
+            {
+                Console.WriteLine(ReturnDiceValues[i]);
+            }
+
+            //Writes data to JSON
+            string Dicejson2 = JsonConvert.SerializeObject(ReturnDiceValues.ToArray());
+
+            System.IO.File.WriteAllText(@"D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput/C#DiceSim2.json", Dicejson2);
 
             Console.ReadLine();
         }
@@ -280,6 +311,34 @@ namespace RandFunctionImplementation
 
                 //Once a card is added, it must be removed from the deck
                 Deck.RemoveAt(ChosenCard);
+            }
+        }
+
+        static void RandDiceRoll1(ref List<int> Values)
+        {
+            //This function uses .Next() to simulate a dice roll
+            Values.Clear();
+
+            Random rand = new Random();
+
+            for (int i = 1; i <= 500; i++)
+            {
+                //Values between 1 and 6 are generated
+                Values.Add(rand.Next(1,7));
+            }
+        }
+
+        static void RandDiceRoll2(ref List<int> Values)
+        {
+            //This function uses .Next() to simulate a dice roll with the specified seed
+            Values.Clear();
+
+            Random rand = new Random(30102000);
+
+            for (int i = 1; i <= 500; i++)
+            {
+                //Values between 1 and 6 are generated
+                Values.Add(rand.Next(1, 7));
             }
         }
     }
