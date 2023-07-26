@@ -35,3 +35,41 @@ print(JSDiceSim1Values)
 setwd("D:/Github/PROJ518/Dice_Rolls")
 RealDiceValues <- fromJSON(file = "DiceRolls.json")
 print(RealDiceValues)
+
+#Chi-Squared Test
+#Due to the nature of the data provided for coin flips, dice rolls and card draws, the chi-squared test can be used to help determine randomness
+#In these tests all three pseudorandom algorithms from C#, Python and JavaScript will be compared against the physical dice roll data
+#This test will be run as seen in D Knuth's 'The Art of Computer Programming Volume 2: Seminumerical Algorithms'
+
+#1a) Dice Rolls
+#The first step is to determine the expected number (np) of each possible value (in this case faces 1 to 6)
+#The probability that any face is rolled on a standard die such as the ones used for testing is always 1/6
+#Therefore the expected number of times each face should occur after 500 rolls is: 500 * 0.166666...
+
+np <- 500 * (1/6)
+print(np)
+
+#Each face should therefore occur roughly 83 times after 500 rolls
+#The expected number can then be compared against the observed number (Yn)
+
+#Counting the frequency of each face
+CDice1 <- as.data.frame(table(CDiceSim1Values))
+print(CDice1Ouput)
+
+CDice2 <- as.data.frame(table(CDiceSim2Values))
+print(CDice2Output)
+
+PDice1 <- as.data.frame(table(PDiceSim1Values))
+print(PDice1)
+
+PDice2 <- as.data.frame(table(PDiceSim2Values))
+print(PDice2)
+
+PDice3 <- as.data.frame(table(PDiceSim3Values))
+print(PDice3)
+
+JSDice <- as.data.frame(table(JSDiceSim1Values))
+print(JSDice)
+
+RealDice <- as.data.frame(table(RealDiceValues))
+print(RealDice)
