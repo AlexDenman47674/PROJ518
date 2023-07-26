@@ -93,3 +93,13 @@ V_PDice3 <- ((PDice3[1, 2] - np)^2 / np) + ((PDice3[2, 2] - np)^2 / np) + ((PDic
 print(V_PDice3)
 
 #For the Python generations the first method had a v = 3.064 while the second method had a v = 2.536 and the third method had a v = 3.88
+
+V_JSDice <- ((JSDice[1, 2] - np)^2 / np) + ((JSDice[2, 2] - np)^2 / np) + ((JSDice[3, 2] - np)^2 / np) + ((JSDice[4, 2] - np)^2 / np) + ((JSDice[5, 2] - np)^2 / np) + ((JSDice[6, 2] - np)^2 / np)
+print(V_JSDice)
+
+#For the JavaScript generations v = 37.12
+
+V_RealDice <- ((RealDice[1, 2] - np)^2 / np) + ((RealDice[2, 2] - np)^2 / np) + ((RealDice[3, 2] - np)^2 / np) + ((RealDice[4, 2] - np)^2 / np) + ((RealDice[5, 2] - np)^2 / np) + ((RealDice[6, 2] - np)^2 / np)
+print(V_RealDice)
+
+#For the real dice rolls v = 6.28
