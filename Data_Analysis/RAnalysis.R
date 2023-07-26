@@ -30,3 +30,8 @@ print(PDiceSim3Values)
 setwd("D:/Github/PROJ518/Javascript_Rand/Javascript_Rand_Output")
 JSDiceSim1Values <- fromJSON(file = "JavaScriptDiceSim.json")
 print(JSDiceSim1Values)
+
+#Retrieving the Real Dice Roll data
+setwd("D:/Github/PROJ518/Dice_Rolls")
+RealDiceValues <- fromJSON(file = "DiceRolls.json")
+print(RealDiceValues)
