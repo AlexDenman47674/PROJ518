@@ -2,13 +2,12 @@
 #RDieharder contains the test suite that will be used and RJson allows for the reading of JSON files
 install.packages("RDieHarder")
 install.packages("rjson")
-install.packages("pixmap")
 
 library(RDieHarder)
 library(rjson)
 library(plyr)
 library(dplyr)
-library(pixmap)
+library(ggplot2)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -217,7 +216,20 @@ print(V_RealCoin)
 
 #For the real dice rolls v = 0.128
 
-#2) Bitmap Generation
-#In order to visualise any patterns within the generated data, a Bitmap can be drawn from the random data sampled
+#2) Visualisation
+CDice1Freq <- CDice1[,2]
+print(CDice1Freq)
+CDice2Freq <- CDice2[,2]
+print(CDice2Freq)
+CDiceFreq <- c(CDice1Freq,CDice2Freq)
+print(CDiceFreq)
+CDiceOutcomes <- c(1,2,3,4,5,6,1,2,3,4,5,6)
+CDiceGroup <- c("C1","C1","C1","C1","C1","C1","C2","C2","C2","C2","C2","C2")
+CDice_DF <- data.frame(CDiceOutcomes, CDiceGroup, CDiceFreq)
+print(CDice_DF)
 
+CDiceGroup_DF <- CDice_DF %>% group_by(CDiceGroup)
+print(CDiceGroup_DF)
 
+ggplot(CDiceGroup_DF, aes(x = CDiceOutcomes, y = CDiceFreq, colour = CDiceGroup)) + 
+  geom_point()
