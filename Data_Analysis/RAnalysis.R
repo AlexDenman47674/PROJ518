@@ -252,8 +252,8 @@ RealCoinFreq <- RealCoin[,2]
 CoinFreq <- c(CCoin1Freq, CCoin2Freq, PCoin1Freq, PCoin2Freq, PCoin3Freq, JSCoinFreq, RndCoinFreq, RealCoinFreq)
 print(CoinFreq)
 CoinOutcomes <- c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)
-CoinGroup <- c("C1(Heads)","C1(Tails)","C2(Heads)","C2(Tails)","P1(Heads)","P1(Tails)","P2(Heads)","P2(Tails)","P3(Heads)",
-               "P3(Tails)","JS(Heads)","JS(Tails)","Rnd(Heads)","Rnd(Tails)","Real(Heads)","Real(Tails)")
+CoinGroup <- c("C1","C1","C2","C2","P1","P1","P2","P2","P3",
+               "P3","JS","JS","Rnd","Rnd","Real","Real")
 Coin_DF <- data.frame(CoinOutcomes, CoinGroup, CoinFreq)
 print(Coin_DF)
 
@@ -261,6 +261,6 @@ CoinGroup_DF <- Coin_DF %>% group_by(CoinGroup)
 print(CoinGroup_DF)
 
 #Bar Graph of Coin Data
-ggplot(CoinGroup_DF) + 
-  geom_bar(stat = "identity", aes(x = CoinGroup, y = CoinFreq, fill = CoinOutcomes), width=0.5) +
-  theme(legend.position="none")
+ggplot(CoinGroup_DF, aes(x = CoinGroup, y = CoinFreq, fill = factor(CoinOutcomes))) + 
+  geom_bar(stat = "identity", width=0.5, position="dodge") +
+  scale_fill_discrete(name="Heads/Tails",breaks=c(0, 1),labels=c("Heads", "Tails"))
