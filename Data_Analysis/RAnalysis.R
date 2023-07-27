@@ -239,3 +239,28 @@ print(DiceGroup_DF)
 #Lined Scatterplot of Dice data
 ggplot(DiceGroup_DF, aes(x = DiceOutcomes, y = DiceFreq, colour = DiceGroup)) + 
   geom_point(size = 3) + geom_smooth(linetype="dashed")
+
+#2b) Visualisation of Coin Data
+CCoin1Freq <- CCoin1[,2]
+CCoin2Freq <- CCoin2[,2]
+PCoin1Freq <- PCoin1[,2]
+PCoin2Freq <- PCoin2[,2]
+PCoin3Freq <- PCoin3[,2]
+JSCoinFreq <- JSCoin[,2]
+RndCoinFreq <- RndCoin[,2]
+RealCoinFreq <- RealCoin[,2]
+CoinFreq <- c(CCoin1Freq, CCoin2Freq, PCoin1Freq, PCoin2Freq, PCoin3Freq, JSCoinFreq, RndCoinFreq, RealCoinFreq)
+print(CoinFreq)
+CoinOutcomes <- c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)
+CoinGroup <- c("C1(Heads)","C1(Tails)","C2(Heads)","C2(Tails)","P1(Heads)","P1(Tails)","P2(Heads)","P2(Tails)","P3(Heads)",
+               "P3(Tails)","JS(Heads)","JS(Tails)","Rnd(Heads)","Rnd(Tails)","Real(Heads)","Real(Tails)")
+Coin_DF <- data.frame(CoinOutcomes, CoinGroup, CoinFreq)
+print(Coin_DF)
+
+CoinGroup_DF <- Coin_DF %>% group_by(CoinGroup)
+print(CoinGroup_DF)
+
+#Bar Graph of Coin Data
+ggplot(CoinGroup_DF) + 
+  geom_bar(stat = "identity", aes(x = CoinGroup, y = CoinFreq, fill = CoinOutcomes), width=0.5) +
+  theme(legend.position="none")
