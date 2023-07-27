@@ -232,4 +232,4 @@ CDiceGroup_DF <- CDice_DF %>% group_by(CDiceGroup)
 print(CDiceGroup_DF)
 
 ggplot(CDiceGroup_DF, aes(x = CDiceOutcomes, y = CDiceFreq, colour = CDiceGroup)) + 
-  geom_point()
+  geom_point(size = 3)
