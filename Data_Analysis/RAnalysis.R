@@ -2,10 +2,13 @@
 #RDieharder contains the test suite that will be used and RJson allows for the reading of JSON files
 install.packages("RDieHarder")
 install.packages("rjson")
+install.packages("pixmap")
 
 library(RDieHarder)
 library(rjson)
+library(plyr)
 library(dplyr)
+library(pixmap)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -213,3 +216,8 @@ V_RealCoin <- ((RealCoin[1, 2] - np)^2 / np) + ((RealCoin[2, 2] - np)^2 / np)
 print(V_RealCoin)
 
 #For the real dice rolls v = 0.128
+
+#2) Bitmap Generation
+#In order to visualise any patterns within the generated data, a Bitmap can be drawn from the random data sampled
+
+
