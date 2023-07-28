@@ -3,7 +3,6 @@
 install.packages("RDieHarder")
 install.packages("rjson")
 
-library(RDieHarder)
 library(rjson)
 library(plyr)
 library(dplyr)
@@ -264,3 +263,4 @@ print(CoinGroup_DF)
 ggplot(CoinGroup_DF, aes(x = CoinGroup, y = CoinFreq, fill = factor(CoinOutcomes))) + 
   geom_bar(stat = "identity", width=0.5, position="dodge") +
   scale_fill_discrete(name="Possible Coin Outcomes",breaks=c(0, 1),labels=c("Heads", "Tails")) + labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Coin Outcomes")
+
