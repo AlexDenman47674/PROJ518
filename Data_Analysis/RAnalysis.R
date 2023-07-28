@@ -238,7 +238,7 @@ print(DiceGroup_DF)
 
 #Lined Scatterplot of Dice data
 ggplot(DiceGroup_DF, aes(x = DiceOutcomes, y = DiceFreq, colour = DiceGroup)) + 
-  geom_point(size = 3) + geom_smooth(linetype="dashed")
+  geom_point(size = 3) + geom_smooth(linetype="dashed") + labs(x = "Possible Dice Outcomes (1-6)", y = "Frequency", color = "Data Sources", title = "A Scatterplot Showing the Frequency of Dice Outcomes")
 
 #2b) Visualisation of Coin Data
 CCoin1Freq <- CCoin1[,2]
@@ -263,4 +263,4 @@ print(CoinGroup_DF)
 #Bar Graph of Coin Data
 ggplot(CoinGroup_DF, aes(x = CoinGroup, y = CoinFreq, fill = factor(CoinOutcomes))) + 
   geom_bar(stat = "identity", width=0.5, position="dodge") +
-  scale_fill_discrete(name="Heads/Tails",breaks=c(0, 1),labels=c("Heads", "Tails"))
+  scale_fill_discrete(name="Possible Coin Outcomes",breaks=c(0, 1),labels=c("Heads", "Tails")) + labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Coin Outcomes")
