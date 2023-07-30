@@ -2,11 +2,13 @@
 #RDieharder contains the test suite that will be used and RJson allows for the reading of JSON files
 install.packages("RDieHarder")
 install.packages("rjson")
+install.packages("dgof")
 
 library(rjson)
 library(plyr)
 library(dplyr)
 library(ggplot2)
+library(dgof)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -264,3 +266,80 @@ ggplot(CoinGroup_DF, aes(x = CoinGroup, y = CoinFreq, fill = factor(CoinOutcomes
   geom_bar(stat = "identity", width=0.5, position="dodge") +
   scale_fill_discrete(name="Possible Coin Outcomes",breaks=c(0, 1),labels=c("Heads", "Tails")) + labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Coin Outcomes")
 
+#3a) Kolmogorov-Smirnov Test of C# rand data
+#Retrieving the C# rand data from the C# output
+setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
+CRand1Values <- fromJSON(file = "RandVer1.json")
+CRand2Values <- fromJSON(file = "RandVer2.json")
+CRand3Values <- fromJSON(file = "RandVer3.json")
+print(CRand1Values)
+print(CRand2Values)
+print(CRand3Values)
+
+#1 sample tests
+ks.test(CRand1Values/100, "pnorm")
+ks.test(CRand2Values/100, "pnorm")
+ks.test(CRand3Values/100, "pnorm")
+
+#2 sample tests
+ks.test(CRand1Values/100, CRand2Values/100)
+ks.test(CRand1Values/100, CRand3Values/100)
+ks.test(CRand2Values/100, CRand3Values/100)
+
+#Visualisation
+plot(ecdf(CRand1Values/100), main="Distribution of C# Rand Data",
+     xlim = range(c(CRand1Values/100, CRand2Values/100)),
+     col = "blue")
+plot(ecdf(CRand2Values/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "red")
+plot(ecdf(CRand3Values/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "green")
+legend(0, 1, legend=c("Rand 1", "Rand 2","Rand 3"),
+       col=c("red", "blue", "green"), lty=1:2, cex=0.8)
+
+#3b) Kolmogorov-Smirnov Test of Lehmer rand data
+setwd("D:/Github/PROJ518/Lehmer_Generator/Lehmer_Generator_Output")
+LehmerInt1Values <- fromJSON(file = "IntegerVer1Output.json")
+LehmerInt2Values <- fromJSON(file = "IntegerVer2Output.json")
+LehmerReal1Values <- fromJSON(file = "RealVer1Output.json")
+LehmerReal2Values <- fromJSON(file = "RealVer2Output.json")
+print(LehmerInt1Values)
+print(LehmerInt2Values)
+print(LehmerReal1Values)
+print(LehmerReal2Values)
+
+#1 sample tests
+ks.test(LehmerInt1Values, "pnorm")
+ks.test(LehmerInt2Values, "pnorm")
+ks.test(LehmerReal1Values, "pnorm")
+ks.test(LehmerReal2Values, "pnorm")
+
+#2 sample tests
+ks.test(LehmerInt1Values, LehmerInt2Values)
+ks.test(LehmerReal1Values, LehmerReal2Values)
+
+#Visualisation
+plot(ecdf(LehmerReal1Values), main="Distribution of Lehmer Generator Data",
+     xlim = range(c(LehmerReal1Values, LehmerReal2Values)),
+     lty = "dashed",
+     col = "blue")
+plot(ecdf(LehmerReal2Values),
+     add = TRUE,
+     lty = "dashed",
+     col = "red")
+
+plot(ecdf(LehmerInt1Values),
+     add = TRUE,
+     xlim = range(c(LehmerInt1Values, LehmerInt2Values)),
+     lty = "dashed",
+     col = "green")
+plot(ecdf(LehmerInt2Values),
+     add = TRUE,
+     lty = "dashed",
+     col = "purple")
+legend(0, 1, legend=c("Lehmer Real 1", "Lehmer Real 2","Lehmer Int 1","Lehmer Int 2"),
+       col=c("red", "blue", "green", "purple"), lty=1:2, cex=0.8)
