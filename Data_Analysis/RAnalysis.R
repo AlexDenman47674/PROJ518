@@ -413,3 +413,48 @@ ks.test(MSRandValues/100, "pnorm")
 plot(ecdf(MSRandValues/100), main="Distribution of Middle Square Method Data",
      lty = "dashed",
      col = "blue")
+
+#3f) Kolmogorov-Smirnov Test of Rand.Org Data
+setwd("D:/Github/PROJ518/RandDotOrg/RandDotOrgOutput")
+RndRandValues <- fromJSON(file = "RandDotOrgOutput1.json")
+
+#1 sample test
+ks.test(RndRandValues/100, "pnorm")
+
+#Visualisation
+plot(ecdf(RndRandValues/100), main="Distribution of Rand.Org Rand Data",
+     lty = "dashed",
+     col = "blue")
+
+#3g) Kolmogorov-Smirnov Test of White Noise Data
+setwd("D:/Github/PROJ518/White_Noise/White_Noise_Output")
+ParkRandValues <-fromJSON(file = "ParkDataCut.json")
+RoundaboutRandValues <-fromJSON(file = "RoundaboutDataCut.json")
+SeaRandValues <-fromJSON(file = "SeaDataCut.json")
+
+#1 sample tests
+ks.test(ParkRandValues/100, "pnorm")
+ks.test(RoundaboutRandValues/100, "pnorm")
+ks.test(SeaRandValues/100, "pnorm")
+
+#2 sample tests
+ks.test(ParkRandValues/100, RoundaboutRandValues/100)
+ks.test(ParkRandValues/100, SeaRandValues/100)
+ks.test(RoundaboutRandValues/100, SeaRandValues/100)
+
+#Visualisation
+plot(ecdf(ParkRandValues/100), main="Distribution of White Noise Data",
+     xlim = range(c(ParkRandValues/100, RoundaboutRandValues/100)),
+     lty = "dashed",
+     col = "blue")
+plot(ecdf(RoundaboutRandValues/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "red")
+
+plot(ecdf(SeaRandValues/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "green")
+legend(-13, 1, legend=c("Park White Noise", "Roundabout White Noise","Sea White Noise"),
+       col=c("red", "blue", "green"), lty=1:2, cex=0.8)
