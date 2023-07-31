@@ -460,63 +460,116 @@ legend(-13, 1, legend=c("Park White Noise", "Roundabout White Noise","Sea White 
        col=c("red", "blue", "green"), lty=1:2, cex=0.8)
 
 #3h) Visualisation of Kolmogorov-Smirnov Tests
-par(xpd=FALSE)
-plot(ecdf(CRand1Values/100), main="Distribution of Collected Rand Data",
-     xlim = range(c(CRand1Values/100, CRand2Values/100)),
-     col = "blue")
-plot(ecdf(CRand2Values/100),
-     add = TRUE,
-     col = "red")
-plot(ecdf(CRand3Values/100),
-     add = TRUE,
-     col = "green")
-plot(ecdf(PRand1Values/100),
-     add = TRUE,
-     col = "yellow")
-plot(ecdf(PRand2Values),
-     add = TRUE,
-     col = "orange")
-plot(ecdf(PRand3Values),
-     add = TRUE,
-     col = "purple")
-plot(ecdf(PRand4Values/100),
-     add = TRUE,
-     col = "pink")
-plot(ecdf(PRand5Values/100),
-     add = TRUE,
-     col = "maroon")
-plot(ecdf(JSRandValues/100),
-     add = TRUE,
-     col = "brown1")
-plot(ecdf(RndRandValues/100),
-     add = TRUE,
-     col = "black")
-plot(ecdf(LehmerInt1Values),
-     add = TRUE,
-     col = "antiquewhite")
-plot(ecdf(LehmerInt2Values),
-     add = TRUE,
-     col = "antiquewhite1")
-plot(ecdf(LehmerReal1Values),
-     add = TRUE,
-     col = "antiquewhite2")
-plot(ecdf(LehmerReal2Values),
-     add = TRUE,
-     col = "antiquewhite3")
-plot(ecdf(MSRandValues/100),
-     add = TRUE,
-     col = "chartreuse")
-plot(ecdf(ParkRandValues/100),
-     add = TRUE,
-     col = "darkgreen")
-plot(ecdf(RoundaboutRandValues/100),
-     add = TRUE,
-     col = "cadetblue")
-plot(ecdf(SeaRandValues/100),
-     add = TRUE,
-     col = "cornflowerblue")
-legend(0,1, legend=c("C# Rand", "C# Seeded Rand","C# Cryptographic Rand","Python Randint", "Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-                      "JavaScript Rand","Rand.Org Data","Lehmer Int 1", "Lehmer Int 2","Lehmer Real 1","Lehmer Real 2","Middle Square Data","Park White Noise", "Roundabout White Noise","Sea White Noise"),
-       col=c("blue", "red", "green","yellow","orange","purple","pink","maroon","brown1","black","antiquewhite","antiquewhite1","antiquewhite2",
-             "antiquewhite3","chartreuse","darkgreen","cadetblue","cornflowerblue"), lty=1:2, cex=0.8)
+CRand1Fn <- ecdf(CRand1Values)
+CRand1Dist <- CRand1Fn(CRand1Values)
+CRand2Fn <- ecdf(CRand2Values)
+CRand2Dist <- CRand2Fn(CRand2Values)
+CRand3Fn <- ecdf(CRand3Values)
+CRand3Dist <- CRand3Fn(CRand3Values)
+
+PRand1Fn <- ecdf(PRand1Values)
+PRand1Dist <- PRand1Fn(PRand1Values)
+PRand2Fn <- ecdf(PRand2Values)
+PRand2Dist <- PRand2Fn(PRand2Values)
+PRand3Fn <- ecdf(PRand3Values)
+PRand3Dist <- PRand3Fn(PRand3Values)
+PRand4Fn <- ecdf(PRand4Values)
+PRand4Dist <- PRand4Fn(PRand4Values)
+PRand5Fn <- ecdf(PRand5Values)
+PRand5Dist <- PRand5Fn(PRand5Values)
+
+JSRandFn <- ecdf(JSRandValues)
+JSRandDist <- JSRandFn(JSRandValues)
+
+RndRandFn <- ecdf(RndRandValues)
+RndRandDist <- RndRandFn(RndRandValues)
+
+LehmerInt1Fn <- ecdf(LehmerInt1Values)
+LehmerInt1Dist <- LehmerInt1Fn(LehmerInt1Values)
+LehmerInt2Fn <- ecdf(LehmerInt2Values)
+LehmerInt2Dist <- LehmerInt2Fn(LehmerInt2Values)
+LehmerReal1Fn <- ecdf(LehmerReal1Values)
+LehmerReal1Dist <- LehmerReal1Fn(LehmerReal1Values)
+LehmerReal2Fn <- ecdf(LehmerReal2Values)
+LehmerReal2Dist <- LehmerReal2Fn(LehmerReal2Values)
+
+MSRandFn <- ecdf(MSRandValues)
+MSRandDist <- MSRandFn(MSRandValues)
+
+ParkRandFn <- ecdf(ParkRandValues)
+ParkRandDist <- ParkRandFn(ParkRandValues)
+RoundaboutRandFn <- ecdf(RoundaboutRandValues)
+RoundaboutRandDist <- RoundaboutRandFn(RoundaboutRandValues)
+SeaRandFn <- ecdf(SeaRandValues)
+SeaRandDist <- SeaRandFn(SeaRandValues)
+
+RandDist <- c(CRand1Dist,CRand2Dist,CRand3Dist,PRand1Dist,PRand2Dist,PRand3Dist,PRand4Dist,PRand5Dist,JSRandDist,RndRandDist,LehmerInt1Dist,LehmerInt2Dist,
+              LehmerReal1Dist,LehmerReal2Dist,MSRandDist,ParkRandDist,RoundaboutRandDist,SeaRandDist)
+
+RandOutput <- c(CRand1Values/100,CRand2Values/100,CRand3Values/100,PRand1Values/100,PRand2Values,PRand3Values,PRand4Values/100,PRand5Values/100,
+                JSRandDist/100,RndRandDist/100,LehmerInt1Dist,LehmerInt2Dist,
+                LehmerReal1Dist,LehmerReal2Dist,MSRandDist/100,ParkRandDist/100,RoundaboutRandDist/100,SeaRandDist/100)
+
+RandGroup <- c()
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'C# Rand')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'C# Seeded Rand')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'C# Cryptographic Rand')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Python Randint')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Python Random')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Python Seeded Random')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Numpy Randint')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Numpy Seeded Randint')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'JavaScript Rand')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Rand.Org Data')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Lehmer Int 1')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Lehmer Int 2')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Lehmer Real 1')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Lehmer Real 2')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Middle Square Data')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Park White Noise')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Roundabout White Noise')
+}
+for (x in 1:500) {
+  RandGroup <- append(RandGroup,'Sea White Noise')
+}
+
+Rand_DF <- data.frame(RandDist, RandGroup, RandOutput)
+RandGroup_DF <- Rand_DF %>% group_by(RandGroup)
+
+ggplot(RandGroup_DF, aes(x = RandOutput, y = RandDist, colour = RandGroup)) + 
+  geom_point() + scale_x_continuous(limits=c(0, 1))+ labs(x = "Random Numbers Generated", y = "Distribution", color = "Data Sources", title = "A Scatterplot Showing Distribution of Collected Rand Data")
+  
 
