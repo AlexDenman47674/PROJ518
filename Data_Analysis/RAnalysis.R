@@ -397,6 +397,19 @@ JSRandValues <- fromJSON(file = "JavaScriptOutput.json")
 #1 sample test
 ks.test(JSRandValues/100, "pnorm")
 
+#Visualisation
 plot(ecdf(JSRandValues/100), main="Distribution of JavaScript Rand Data",
+     lty = "dashed",
+     col = "blue")
+
+#3e) Kolmogorov-Smirnov Test of Middle Square Method data
+setwd("D:/Github/PROJ518/Middle_Square_Method/Middle_Square_Output")
+MSRandValues <- fromJSON(file = "MiddleSquare.json")
+
+#1 sample test
+ks.test(MSRandValues/100, "pnorm")
+
+#Visualisation
+plot(ecdf(MSRandValues/100), main="Distribution of Middle Square Method Data",
      lty = "dashed",
      col = "blue")
