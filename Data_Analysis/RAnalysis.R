@@ -516,8 +516,7 @@ plot(ecdf(SeaRandValues/100),
      add = TRUE,
      col = "cornflowerblue")
 legend(0,1, legend=c("C# Rand", "C# Seeded Rand","C# Cryptographic Rand","Python Randint", "Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-                      "JavaScript Rand","Rand.Org Data","Lehmer Real 1", "Lehmer Real 2","Lehmer Int 1","Lehmer Int 2","Middle Square Data","Park White Noise", "Roundabout White Noise","Sea White Noise"),
+                      "JavaScript Rand","Rand.Org Data","Lehmer Int 1", "Lehmer Int 2","Lehmer Real 1","Lehmer Real 2","Middle Square Data","Park White Noise", "Roundabout White Noise","Sea White Noise"),
        col=c("blue", "red", "green","yellow","orange","purple","pink","maroon","brown1","black","antiquewhite","antiquewhite1","antiquewhite2",
              "antiquewhite3","chartreuse","darkgreen","cadetblue","cornflowerblue"), lty=1:2, cex=0.8)
 
-print(ecdf(CRand1Values/100))
