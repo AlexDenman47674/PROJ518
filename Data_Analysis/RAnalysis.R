@@ -343,3 +343,49 @@ plot(ecdf(LehmerInt2Values),
      col = "purple")
 legend(0, 1, legend=c("Lehmer Real 1", "Lehmer Real 2","Lehmer Int 1","Lehmer Int 2"),
        col=c("red", "blue", "green", "purple"), lty=1:2, cex=0.8)
+
+#3c) Kolmogorov-Smirnov Test of Python rand data
+setwd("D:/Github/PROJ518/Python_Rand_Function/Python_Output")
+PRand1Values <- fromJSON(file = "PythonOutput1.json")
+PRand2Values <- fromJSON(file = "PythonOutput2.json")
+PRand3Values <- fromJSON(file = "PythonOutput3.json")
+PRand4Values <- fromJSON(file = "PythonOutput4.json")
+PRand5Values <- fromJSON(file = "PythonOutput5.json")
+
+#1 sample tests
+ks.test(PRand1Values/100, "pnorm")
+ks.test(PRand2Values, "pnorm")
+ks.test(PRand3Values, "pnorm")
+ks.test(PRand4Values/100, "pnorm")
+ks.test(PRand5Values/100, "pnorm")
+
+#2 sample tests
+ks.test(PRand2Values, PRand3Values)
+ks.test(PRand1Values/100, PRand4Values/100)
+ks.test(PRand1Values/100, PRand5Values/100)
+ks.test(PRand4Values/100, PRand5Values/100)
+
+#Visualisation
+plot(ecdf(PRand1Values/100), main="Distribution of Python Rand Data",
+     xlim = range(c(PRand1Values/100, PRand2Values)),
+     lty = "dashed",
+     col = "blue")
+plot(ecdf(PRand2Values),
+     add = TRUE,
+     lty = "dashed",
+     col = "red")
+
+plot(ecdf(PRand3Values),
+     add = TRUE,
+     lty = "dashed",
+     col = "green")
+plot(ecdf(PRand4Values/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "purple")
+plot(ecdf(PRand5Values/100),
+     add = TRUE,
+     lty = "dashed",
+     col = "orange")
+legend(0, 1, legend=c("Python Randint", "Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint"),
+       col=c("red", "blue", "green", "purple","orange"), lty=1:2, cex=0.8)
