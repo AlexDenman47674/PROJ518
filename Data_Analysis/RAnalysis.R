@@ -298,7 +298,7 @@ plot(ecdf(CRand3Values/100),
      add = TRUE,
      lty = "dashed",
      col = "green")
-legend(0, 1, legend=c("Rand 1", "Rand 2","Rand 3"),
+legend(0, 1, legend=c("C# Rand", "C# Seeded Rand","C# Cryptographic Rand"),
        col=c("red", "blue", "green"), lty=1:2, cex=0.8)
 
 #3b) Kolmogorov-Smirnov Test of Lehmer rand data
@@ -389,3 +389,5 @@ plot(ecdf(PRand5Values/100),
      col = "orange")
 legend(0, 1, legend=c("Python Randint", "Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint"),
        col=c("red", "blue", "green", "purple","orange"), lty=1:2, cex=0.8)
+
+
