@@ -390,4 +390,13 @@ plot(ecdf(PRand5Values/100),
 legend(0, 1, legend=c("Python Randint", "Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint"),
        col=c("red", "blue", "green", "purple","orange"), lty=1:2, cex=0.8)
 
+#3d) Kolmogorov-Smirnov Test of Javascript rand data
+setwd("D:/Github/PROJ518/Javascript_Rand/Javascript_Rand_Output")
+JSRandValues <- fromJSON(file = "JavaScriptOutput.json")
 
+#1 sample test
+ks.test(JSRandValues/100, "pnorm")
+
+plot(ecdf(JSRandValues/100), main="Distribution of JavaScript Rand Data",
+     lty = "dashed",
+     col = "blue")
