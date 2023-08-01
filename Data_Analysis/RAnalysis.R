@@ -613,9 +613,13 @@ print(serial.test(PRand5Values/100, d=2))
 
 #4c) Serial Test of JavaScript Rand Data
 print(serial.test(JSRandValues/100, d=2))
+#JSRand scored a chi-squared stat of 5 and a p-value of 0.17
+#The observed counts achieved were 70, 47, 61, 66
 
 #4d) Serial Test of Rand.Org Data
 print(serial.test(RndRandValues/100, d=2))
+#RndRand scored a chi-squared stat of 3.4 and a p-value of 0.33
+#The observed counts achieved were 57, 67, 71, 53
 
 #4e) Serial Test of Lehmer Generator Rand Data
 print(serial.test(LehmerInt1Values, d=2))
