@@ -632,13 +632,21 @@ print(serial.test(LehmerReal1Values, d=2))
 #LehmerReal1 scored a chi-sqaured stat of 3.9 and a p-value of 0.28
 #The observed counts achieved were 62, 75, 59, 54
 print(serial.test(LehmerReal2Values, d=2))
-#LehmerReal2 scored a chi-sqaured stat of 0.34 and a p-value of 0.95
+#LehmerReal2 scored a chi-squared stat of 0.34 and a p-value of 0.95
 #The observed counts achieved were 60, 63, 61, 66
 
 #4f) Serial Test of Middle Square Generator Data
 print(serial.test(MSRandValues/100, d=2))
+#MSRand scored a chi-squared stat of 726 and a p-value of 4.2e-157
+#The observed counts achieved were 247, 0, 3, 0
 
 #4g) Serial Test of White Noise Data
 print(serial.test(ParkRandValues/100, d=2))
+#ParkRand scored a chi-squared stat of 250 and a p-value of 6.5e-54
+#The observed counts achieved were 0, 0, 0, 0
 print(serial.test(RoundaboutRandValues/100, d=2))
+#RoundaboutRand scored a chi-squared stat of 230 and a p-value of 1.1e-49
+#The observed counts achieved were 3, 4, 2, 1
 print(serial.test(SeaRandValues/100, d=2))
+#SeaRand scored a chi-squared stat of 237 and a p-value of 5.2e-51
+#The observed counts achieved were 0, 6, 0, 1
