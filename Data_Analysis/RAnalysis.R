@@ -3,12 +3,15 @@
 install.packages("RDieHarder")
 install.packages("rjson")
 install.packages("dgof")
+install.packages("Rtools")
+install.packages("randtoolbox")
 
 library(rjson)
 library(plyr)
 library(dplyr)
 library(ggplot2)
 library(dgof)
+library(randtoolbox)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -267,6 +270,11 @@ ggplot(CoinGroup_DF, aes(x = CoinGroup, y = CoinFreq, fill = factor(CoinOutcomes
   scale_fill_discrete(name="Possible Coin Outcomes",breaks=c(0, 1),labels=c("Heads", "Tails")) + labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Coin Outcomes")
 
 #3a) Kolmogorov-Smirnov Test of C# rand data
+#The Kolmogorov-Smirnov Test takes  a collection of random data between 0 and 1 then calculates the equidistribution of the data
+#A balanced generator will provide an equal distribution of all possible values between 0 and 1 as equal weighting is used
+#As not all data generated was orginally between 0 and 1, a division of 100 was used on some data sets to ensure they align with the requirements of the KS test
+#Due to the generators providing results between 0 and 100 this will not effect the accuracy or weighting of the generators
+
 #Retrieving the C# rand data from the C# output
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
 CRand1Values <- fromJSON(file = "RandVer1.json")
@@ -571,5 +579,38 @@ RandGroup_DF <- Rand_DF %>% group_by(RandGroup)
 
 ggplot(RandGroup_DF, aes(x = RandOutput, y = RandDist, colour = RandGroup)) + 
   geom_point() + scale_x_continuous(limits=c(0, 1))+ labs(x = "Random Numbers Generated", y = "Distribution", color = "Data Sources", title = "A Scatterplot Showing Distribution of Collected Rand Data")
-  
 
+#4a) Serial Test of C# Rand Data
+#The Serial Test is used to test the equidistribution of pairs of values
+#While the KS Test focused on the distribution of the dataset as a whole, the Serial Test uses value d to compare sets of values
+#As with the KS Test, the Serial Test requires data between 0 and 1, so division is used on some datasets to ensure they conform to the test requirements
+print(serial.test(CRand1Values/100, d=2))
+print(serial.test(CRand2Values/100, d=2))
+print(serial.test(CRand3Values/100, d=2))
+
+#4b) Serial Test of Python Rand Data
+print(serial.test(PRand1Values/100, d=2))
+print(serial.test(PRand2Values, d=2))
+print(serial.test(PRand3Values, d=2))
+print(serial.test(PRand4Values/100, d=2))
+print(serial.test(PRand5Values/100, d=2))
+
+#4c) Serial Test of JavaScript Rand Data
+print(serial.test(JSRandValues/100, d=2))
+
+#4d) Serial Test of Rand.Org Data
+print(serial.test(RndRandValues/100, d=2))
+
+#4e) Serial Test of Lehmer Generator Rand Data
+print(serial.test(LehmerInt1Values, d=2))
+print(serial.test(LehmerInt2Values, d=2))
+print(serial.test(LehmerReal1Values, d=2))
+print(serial.test(LehmerReal2Values, d=2))
+
+#4f) Serial Test of Middle Square Generator Data
+print(serial.test(MSRandValues/100, d=2))
+
+#4g) Serial Test of White Noise Data
+print(serial.test(ParkRandValues/100, d=2))
+print(serial.test(RoundaboutRandValues/100, d=2))
+print(serial.test(SeaRandValues/100, d=2))
