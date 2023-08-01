@@ -650,3 +650,18 @@ print(serial.test(RoundaboutRandValues/100, d=2))
 print(serial.test(SeaRandValues/100, d=2))
 #SeaRand scored a chi-squared stat of 237 and a p-value of 5.2e-51
 #The observed counts achieved were 0, 6, 0, 1
+
+#4h) Visualisation
+#Some p-values presented were considered to be anomalous either due to the nature or faults of the generators in question
+#Therefore when visualising the data these generators were removed to allow for a more balanced overview
+SerialPValue <- c(0.76,0.69,0.14,0.27,0.03,0.43,0.7,0.17,0.33,0.28,0.95)
+SerialPGroup <- c("C# Rand","C# Seeded Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
+                  "JavaScript Rand","Rand.Org Data","Lehmer Real 1","Lehmer Real 2")
+SerialP_DF <- data.frame(SerialPValue, SerialPGroup)
+SerialPGroup_DF <- SerialP_DF %>% group_by(SerialPGroup)
+
+ggplot(SerialPGroup_DF, aes(x = reorder(SerialPGroup, -SerialPValue), y = SerialPValue, fill = SerialPGroup)) + 
+  geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
+  labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Rand Data") + geom_text(aes(label = SerialPValue, vjust = 1.2))
+
+  
