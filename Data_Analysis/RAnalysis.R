@@ -585,11 +585,19 @@ ggplot(RandGroup_DF, aes(x = RandOutput, y = RandDist, colour = RandGroup)) +
 #While the KS Test focused on the distribution of the dataset as a whole, the Serial Test uses value d to compare sets of values
 #As with the KS Test, the Serial Test requires data between 0 and 1, so division is used on some datasets to ensure they conform to the test requirements
 print(serial.test(CRand1Values/100, d=2))
+#CRand1 scored a chi-squared stat of 1.2 and a p-value of 0.76
+#The observed counts achieved were 62, 69, 62, 57
 print(serial.test(CRand2Values/100, d=2))
+#CRand2 scored a chi-squared stat of 1.5 and a p-value of 0.69
+#The observed counts achieved were 55, 68, 62, 65
 print(serial.test(CRand3Values/100, d=2))
+#CRand3 scored a chi-squared stat of 139 and a p-value of 7.1e-30
+#The observed counts achieved were 11, 11, 20, 23
 
 #4b) Serial Test of Python Rand Data
 print(serial.test(PRand1Values/100, d=2))
+#PRand1 scored a chi-squared stat of 5.4 and a p-value of 0.14
+#The observed counts achieved were 55, 54, 77, 62
 print(serial.test(PRand2Values, d=2))
 print(serial.test(PRand3Values, d=2))
 print(serial.test(PRand4Values/100, d=2))
