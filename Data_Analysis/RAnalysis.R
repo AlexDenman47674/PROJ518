@@ -623,9 +623,17 @@ print(serial.test(RndRandValues/100, d=2))
 
 #4e) Serial Test of Lehmer Generator Rand Data
 print(serial.test(LehmerInt1Values, d=2))
+#LehmerInt1 scored a chi-sqaured stat of 87 and a p-value of 0.1e-19
+#The observed counts achieved were 46, 35, 18, 13
 print(serial.test(LehmerInt2Values, d=2))
+#LehmerInt2 scored a chi-squared stat of 223 and a p-value of 4.9e-48
+#The observed counts achieved were 3, 3, 5, 3
 print(serial.test(LehmerReal1Values, d=2))
+#LehmerReal1 scored a chi-sqaured stat of 3.9 and a p-value of 0.28
+#The observed counts achieved were 62, 75, 59, 54
 print(serial.test(LehmerReal2Values, d=2))
+#LehmerReal2 scored a chi-sqaured stat of 0.34 and a p-value of 0.95
+#The observed counts achieved were 60, 63, 61, 66
 
 #4f) Serial Test of Middle Square Generator Data
 print(serial.test(MSRandValues/100, d=2))
