@@ -599,9 +599,17 @@ print(serial.test(PRand1Values/100, d=2))
 #PRand1 scored a chi-squared stat of 5.4 and a p-value of 0.14
 #The observed counts achieved were 55, 54, 77, 62
 print(serial.test(PRand2Values, d=2))
+#PRand2 scored a chi-squared stat of 3.9 and a p-value of 0.27
+#The observed counts achieved were 57, 58, 76, 59
 print(serial.test(PRand3Values, d=2))
+#PRand3 scored a chi-squared stat of 9 and a p-value of 0.03
+#The observed counts achieved were 60, 48, 61, 81
 print(serial.test(PRand4Values/100, d=2))
+#PRand4 scored a chi-squared stat of 2.8 and a p-value of 0.43
+#The observed counts achieved were 55, 62, 73, 60
 print(serial.test(PRand5Values/100, d=2))
+#PRand5 scored a chi-squared stat of 1.4 and a p-value of 0.7
+#The observed counts achieved were 63, 68, 55, 64
 
 #4c) Serial Test of JavaScript Rand Data
 print(serial.test(JSRandValues/100, d=2))
