@@ -717,3 +717,7 @@ print(gap.test(LehmerReal1Values))
 print(gap.test(LehmerReal2Values))
 #LehmerReal2 had a chi-squared stat of 4.8 and a p-value of 0.85
 
+#5f) Gap Test of Middle Square Data
+print(gap.test(MSRandValues/100))
+#MSRand had a chi-squared stat of 1.6e+147 and a p-value of 0
+
