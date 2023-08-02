@@ -677,6 +677,7 @@ print(gap.test(CRand3Values/100))
 #CRand3 had a chi-sqaured stat of 32 and a p-value of 0.00023
 #The observed frequencies were 58, 18, 3, 0, 0, 0, 0, 0, 0, 0
 
+#5b) Gap Test of Python Rand Data
 print(gap.test(PRand1Values/100))
 #PRand1 had a chi-squared stat of 5.3 and a p-value of 0.8
 #The observed frequencies were 61, 35, 15, 7, 7, 1, 0, 0, 0, 0
@@ -692,4 +693,9 @@ print(gap.test(PRand4Values/100))
 print(gap.test(PRand5Values/100))
 #PRand5 had a chi-squared stat of 12 and a p-value of 0.22
 #The observed frequencies were 67, 40, 8, 6, 4, 2, 1, 2, 0, 0
+
+#5c) Gap Test of JavaScript Rand Data
+print(gap.test(JSRandValues/100))
+#JSRand had a ch-squared stat of 6.7 and a p-value of 0.67
+#The observed frequencies were 49, 38, 17, 10, 3, 1, 1, 1, 0, 0
 
