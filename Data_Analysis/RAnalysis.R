@@ -716,8 +716,18 @@ print(gap.test(LehmerReal1Values))
 #The observed frequencies were 60, 26, 16, 10, 4, 0, 2, 3, 0, 0
 print(gap.test(LehmerReal2Values))
 #LehmerReal2 had a chi-squared stat of 4.8 and a p-value of 0.85
+#The observed frequencies were 58, 33, 20, 9, 1, 2, 1, 0, 0, 0
 
 #5f) Gap Test of Middle Square Data
 print(gap.test(MSRandValues/100))
 #MSRand had a chi-squared stat of 1.6e+147 and a p-value of 0
 
+#5g) Gap Test of White Noise Data
+print(gap.test(ParkRandValues/100))
+#ParkRand had a chi-squared stat of 120 and a p-value of 1.3e-21
+#The observed frequencies were 0, 1, 1, 0, 0, 0, 1, 0, 0, 0
+print(gap.test(RoundaboutRandValues/100))
+#RoundaboutRand had a chi-squared stat of 109 and a p-value of 2e-19
+#The observed frequencies were 5, 0, 1, 0, 2, 0, 1, 0, 0, 0
+print(gap.test(SeaRandValues/100))
+#SeaRand had a chi-squared stat of 121 and a p-value of 8.5e-22
