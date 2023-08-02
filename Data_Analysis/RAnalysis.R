@@ -696,6 +696,11 @@ print(gap.test(PRand5Values/100))
 
 #5c) Gap Test of JavaScript Rand Data
 print(gap.test(JSRandValues/100))
-#JSRand had a ch-squared stat of 6.7 and a p-value of 0.67
+#JSRand had a chi-squared stat of 6.7 and a p-value of 0.67
 #The observed frequencies were 49, 38, 17, 10, 3, 1, 1, 1, 0, 0
+
+#5d) Gap Test of Rand.Org Data
+print(gap.test(RndRandValues/100))
+#Rand.Org had a chi-squared stat of 17 and a p-value of 0.042
+#The observed frequencies were 51, 26, 19, 11, 1, 4, 2, 0, 0, 1
 
