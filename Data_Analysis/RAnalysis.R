@@ -731,3 +731,16 @@ print(gap.test(RoundaboutRandValues/100))
 #The observed frequencies were 5, 0, 1, 0, 2, 0, 1, 0, 0, 0
 print(gap.test(SeaRandValues/100))
 #SeaRand had a chi-squared stat of 121 and a p-value of 8.5e-22
+#The observed frequencies were 1, 0, 1, 0, 0, 0, 0, 0, 0, 0
+
+#5h) Visualisation
+GapPValue <- c(0.3,0.12,0.00023,0.8,0.56,0.73,0.6,0.22,0.67,0.042,0.0012,0.036,0.85)
+GapPGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
+                  "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Real 1","Lehmer Real 2")
+
+GapP_DF <- data.frame(GapPValue, GapPGroup)
+GapPGroup_DF <- GapP_DF %>% group_by(GapPGroup)
+
+ggplot(GapPGroup_DF, aes(x = reorder(GapPGroup, -GapPValue), y = GapPValue, fill = GapPGroup)) + 
+  geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
+  labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Gap Test Data") + geom_text(aes(label = GapPValue, vjust = 1.2))
