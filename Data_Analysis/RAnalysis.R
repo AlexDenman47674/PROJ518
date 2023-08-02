@@ -664,4 +664,16 @@ ggplot(SerialPGroup_DF, aes(x = reorder(SerialPGroup, -SerialPValue), y = Serial
   geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
   labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Rand Data") + geom_text(aes(label = SerialPValue, vjust = 1.2))
 
-  
+#5a) Gap Test of C# Rand Data
+#The Gap Test is designed to show the length of gaps between recurring values in the data
+#The tests used count the observed frequency of gaps ranging in length from 1 to 10 which is then compared against the theoretical frequency of these gaps
+print(gap.test(CRand1Values/100))
+#CRand1 had a chi-squared stat of 11 and a p-value of 0.3
+#The observed frequencies were 75, 37, 10, 7, 4, 2, 3, 0, 0, 0
+print(gap.test(CRand2Values/100))
+#CRand2 had a chi-squared stat of 14 and a p-value of 0.12
+#The observed frequencies were 49, 39, 16, 12, 1, 0, 1, 0, 1, 0
+print(gap.test(CRand3Values/100))
+#CRand3 had a chi-sqaured stat of 32 and a p-value of 0.00023
+#The observed frequencies were 58, 18, 3, 0, 0, 0, 0, 0, 0, 0
+
