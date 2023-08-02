@@ -704,3 +704,16 @@ print(gap.test(RndRandValues/100))
 #Rand.Org had a chi-squared stat of 17 and a p-value of 0.042
 #The observed frequencies were 51, 26, 19, 11, 1, 4, 2, 0, 0, 1
 
+#5e) Gap Test of Lehmer Generator Rand Data
+print(gap.test(LehmerInt1Values))
+#LehmerInt1 had a chi-squared stat of 27 and a p-value of 0.0012
+#The observed frequencies were 75, 18, 4, 3, 0, 0, 0, 0, 0, 0
+print(gap.test(LehmerInt2Values))
+#LehmerInt2 had a chi-squared stat of 79 and a p-value of 2.6e-13
+#The observed frequencies were 13, 9, 2, 2, 0, 0, 0, 0, 0, 0
+print(gap.test(LehmerReal1Values))
+#LehmerReal1 had a chi-squared stat of 18 and a p-value of 0.036
+#The observed frequencies were 60, 26, 16, 10, 4, 0, 2, 3, 0, 0
+print(gap.test(LehmerReal2Values))
+#LehmerReal2 had a chi-squared stat of 4.8 and a p-value of 0.85
+
