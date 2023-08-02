@@ -662,7 +662,7 @@ SerialPGroup_DF <- SerialP_DF %>% group_by(SerialPGroup)
 
 ggplot(SerialPGroup_DF, aes(x = reorder(SerialPGroup, -SerialPValue), y = SerialPValue, fill = SerialPGroup)) + 
   geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
-  labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Rand Data") + geom_text(aes(label = SerialPValue, vjust = 1.2))
+  labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Serial Test Data") + geom_text(aes(label = SerialPValue, vjust = 1.2))
 
 #5a) Gap Test of C# Rand Data
 #The Gap Test is designed to show the length of gaps between recurring values in the data
@@ -676,4 +676,20 @@ print(gap.test(CRand2Values/100))
 print(gap.test(CRand3Values/100))
 #CRand3 had a chi-sqaured stat of 32 and a p-value of 0.00023
 #The observed frequencies were 58, 18, 3, 0, 0, 0, 0, 0, 0, 0
+
+print(gap.test(PRand1Values/100))
+#PRand1 had a chi-squared stat of 5.3 and a p-value of 0.8
+#The observed frequencies were 61, 35, 15, 7, 7, 1, 0, 0, 0, 0
+print(gap.test(PRand2Values))
+#PRand2 had a chi-squared stat of 7.7 and a p-value of 0.56
+#The observed frequencies were 67, 29, 21, 5, 2, 1, 1, 1, 1, 0
+print(gap.test(PRand3Values))
+#PRand3 had a chi-squared stat of 6.1 and a p-value of 0.73
+#The observed frequencies were 55, 39, 16, 8, 2, 1, 0, 0, 0, 0
+print(gap.test(PRand4Values/100))
+#PRand4 had a chi-squared stat of 7.3 and a p-value of 0.6
+#The observed frequencies were 64, 29, 19, 6, 2, 2, 1, 2, 0, 0
+print(gap.test(PRand5Values/100))
+#PRand5 had a chi-squared stat of 12 and a p-value of 0.22
+#The observed frequencies were 67, 40, 8, 6, 4, 2, 1, 2, 0, 0
 
