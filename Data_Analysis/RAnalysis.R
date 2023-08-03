@@ -762,94 +762,94 @@ RealCard2Values <- fromJSON(file = "CardDraw2(Ollie).json")
 RealCard3Values <- fromJSON(file = "CardDraw3(James).json")
 
 #In string form, the values given aren't suitable for visualisation
-#First the data can be sorted into the four suits (spades (1), hearts (2), clubs (3), diamonds (4))
+#First the data can be sorted into the four suits (spades, hearts, clubs, diamonds)
 CardSuitGroup <- c()
 for (x in CCard1Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in CCard2Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in PCard1Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in PCard2Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in PCard3Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in RealCard1Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in RealCard2Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 for (x in RealCard3Values) {
   if (grepl("of Spades", x)) {
-    CardSuitGroup <- append(CardSuitGroup, 1)
+    CardSuitGroup <- append(CardSuitGroup, "Spade")
   }else if (grepl("of Hearts", x)){
-    CardSuitGroup <- append(CardSuitGroup, 2)
+    CardSuitGroup <- append(CardSuitGroup, "Heart")
   }else if (grepl("of Clubs", x)){
-    CardSuitGroup <- append(CardSuitGroup, 3)
+    CardSuitGroup <- append(CardSuitGroup, "Club")
   }else if (grepl("of Diamonds", x)){
-    CardSuitGroup <- append(CardSuitGroup, 4)
+    CardSuitGroup <- append(CardSuitGroup, "Diamond")
   }
 }
 
