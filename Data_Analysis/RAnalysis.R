@@ -1011,3 +1011,47 @@ PokerTest_function(RealCard3PT)
 #Full House(Clubs,Spades), 3 of a kind(Diamonds), 5 of a kind(Diamonds), 3 of a kind(Hearts), Two Pair(Spades,Clubs)
 #3 of a kind(Clubs), 4 of a kind(Hearts), 3 of a kind(Spades), 3 of a kind(Diamonds), Two Pair(Spades,Clubs)
 
+#Totals for CCard1: 1 Pair, 6 Two Pairs, 2 3 of a kind, 1 Full House, 0 4 of a kind, 0 five of a kind
+#Totals for CCard2: 2 Pair, 4 Two Pairs, 4 3 of a kind, 0 Full House, 0 4 of a kind, 0 five of a kind
+#Totals for PCard1: 3 Pair, 2 Two Pairs, 2 3 of a kind, 2 Full House, 1 4 of a kind, 0 five of a kind
+#Totals for PCard2: 0 Pair, 3 Two Pairs, 5 3 of a kind, 1 Full House, 1 4 of a kind, 0 five of a kind
+#Totals for PCard3: 1 Pair, 5 Two Pairs, 0 3 of a kind, 1 Full House, 2 4 of a kind, 0 five of a kind
+#Totals for RealCard1: 1 Pair, 0 Two Pairs, 2 3 of a kind, 2 Full House, 4 4 of a kind, 1 five of a kind
+#Totals for RealCard2: 2 Pair, 2 Two Pairs, 3 3 of a kind, 2 Full House, 1 4 of a kind, 0 five of a kind
+#Totals for RealCard3: 0 Pair, 2 Two Pairs, 5 3 of a kind, 1 Full House, 1 4 of a kind, 1 five of a kind
+
+#6c) Visualisation
+CardOutcomes <-c(1,6,2,1,0,0,
+                 2,4,4,0,0,0,
+                 3,2,2,2,1,0,
+                 0,3,5,1,1,0,
+                 1,5,0,1,2,0,
+                 1,0,2,2,4,1,
+                 2,2,3,2,1,0,
+                 0,2,5,1,1,1)
+HandOutcomes <-c("Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind",
+                 "Pair","Two Pair","Three of a Kind","Full House","Four of a Kind","Five of a Kind")
+CardSources <-c("C# Random","C# Random","C# Random","C# Random","C# Random","C# Random",
+                "C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random",
+                "Python Randint","Python Randint","Python Randint","Python Randint","Python Randint","Python Randint",
+                "Numpy Random","Numpy Random","Numpy Random","Numpy Random","Numpy Random","Numpy Random",
+                "Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random",
+                "Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1",
+                "Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2",
+                "Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3")
+
+PokerTest_DF <- data.frame(CardOutcomes, HandOutcomes, CardSources)
+print(PokerTest_DF)
+
+ggplot(PokerTest_DF, aes(x = CardSources, y = CardOutcomes, fill = factor(HandOutcomes))) + 
+  geom_bar(stat = "identity", width=0.8, position="dodge") +
+  scale_fill_discrete(name="Possible Card Outcomes",breaks=c("Pair", "Two Pair", "Three of a Kind", "Full House", "Four of a Kind", "Five of a Kind"),
+                      labels=c("Pair", "Two Pair","Three of a Kind","Full House", "Four of a Kind","Five of a Kind")) + 
+  theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
+  labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes")
