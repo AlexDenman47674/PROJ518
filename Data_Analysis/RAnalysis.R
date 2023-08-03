@@ -1166,3 +1166,32 @@ PokerDealer_Fn(RealCard3Values)
 #Player 4 has a Pair
 #Player 5 has High Card
 #Player 6 has High Card
+
+#Visualisation
+CardDealValues <- c(2,4,0,0,3,2,0,1,3,3,0,0,5,1,0,0,2,4,0,0,2,3,1,0,2,3,1,0,4,2,0,0)
+CardDealOutcomes <- c("High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind",
+                      "High Card","Pair","Two Pair","Three of a Kind")
+CardDealSources <- c("C# Random","C# Random","C# Random","C# Random",
+                     "C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random",
+                     "Python Randint","Python Randint","Python Randint","Python Randint",
+                     "Numpy Random","Numpy Random","Numpy Random","Numpy Random",
+                     "Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random",
+                     "Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1",
+                     "Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2",
+                     "Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3")
+
+PokerDeal_DF <- data.frame(CardDealValues, CardDealOutcomes, CardDealSources)
+print(PokerDeal_DF)
+
+ggplot(PokerDeal_DF, aes(x = CardDealSources, y = CardDealValues, fill = factor(CardDealOutcomes))) + 
+  geom_bar(stat = "identity", width=0.8, position="dodge") +
+  scale_fill_discrete(name="Possible Card Outcomes",breaks=c("High Card","Pair", "Two Pair", "Three of a Kind"),
+                      labels=c("High Card","Pair", "Two Pair","Three of a Kind")) + 
+  theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
+  labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes after non-sequential distribution")
