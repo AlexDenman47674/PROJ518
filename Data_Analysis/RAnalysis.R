@@ -894,3 +894,46 @@ print(CardSuit_DF)
 ggplot(CardSuit_DF, aes(x = CardShuffleGroup, y = CardPosition, colour = CardSuitGroup)) + 
   geom_point(size = 3) + labs(x = "Data Sources", y = "Card Position", 
                                                                color = "Suits", title = "A Scatterplot Showing the Distribution of Card Suits in Different Shuffle Methods")
+#6b) The Poker Test of Card Draw Data
+#The Poker Test is designed to evaluate the patterns in n groups of 5 successive values, replicating possible poker hands
+#A standard game of poker is played with a deck of 52 cards, although some games play with 2 'wildcard' jokers that allow for five of a kind outcomes
+#The decks used for this test consist only of a traditional 52 cards, divided evenly into the four suits
+#The hands to be examined consist of either one pair, two pairs, three of a kind, full house (3 of a kind and a pair) or four of a kind
+#While in an actual game of poker other hands can be made that relate to the card value not just the suit for the sake of this test only the suit will be taken into account
+#In addition as this test compares successive groups of 5 cards and each deck contains 52 cards, cards 51 and 52 will be noted and excluded from testing
+#The suit of these cards will be taken into consideration and the probability of the respective suits will be adjusted accordingly
+print(CCard1Values)
+CCard1PT <- CCard1Values[-52]
+CCard1PT <- CCard1PT[-51]
+#CCard1 removed 6 of Clubs and King of Diamonds
+print(CCard2Values)
+CCard2PT <- CCard2Values[-52]
+CCard2PT <- CCard2PT[-51]
+#CCard2 removed 3 of Hearts and King of Diamonds
+
+print(PCard1Values)
+PCard1PT <- PCard1Values[-52]
+PCard1PT <- PCard1PT[-51]
+#PCard1 removed 10 of Hearts and 3 of Clubs
+print(PCard2Values)
+PCard2PT <- PCard2Values[-52]
+PCard2PT <- PCard2PT[-51]
+#PCard2 removed 4 of Clubs and King of Diamonds
+print(PCard3Values)
+PCard3PT <- PCard3Values[-52]
+PCard3PT <- PCard3PT[-51]
+#PCard3 removed 10 of Spades and King of Diamonds
+
+print(RealCard1Values)
+RealCard1PT <- RealCard1Values[-52]
+RealCard1PT <- RealCard1PT[-51]
+#RealCard1 removed King of Hearts and Queen of Hearts
+print(RealCard2Values)
+RealCard2PT <- RealCard2Values[-52]
+RealCard2PT <- RealCard2PT[-51]
+#RealCard2 removed 8 of Diamonds and 7 of Diamonds
+print(RealCard3Values)
+RealCard3PT <- RealCard3Values[-52]
+RealCard3PT <- RealCard3PT[-51]
+#RealCard3 removed 9 of Clubs and 3 of Hearts
+
