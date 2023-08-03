@@ -1072,6 +1072,13 @@ PokerDealer_Fn <- function(InputDeck){
   Player5Hand <- c()
   Player6Hand <- c()
   
+  Player1Outcome <- c()
+  Player2Outcome <- c()
+  Player3Outcome <- c()
+  Player4Outcome <- c()
+  Player5Outcome <- c()
+  Player6Outcome <- c()
+  
   for (x in 1:5){
     Player1Hand <- append(Player1Hand, InputDeck[1])
     Player2Hand <- append(Player2Hand, InputDeck[2])
@@ -1102,3 +1109,60 @@ PokerDealer_Fn <- function(InputDeck){
 }
 
 PokerDealer_Fn(CCard1Values)
+#Player 1 has a Pair
+#Player 2 has a High Card
+#Player 3 has a Pair
+#Player 4 has a Pair
+#Player 5 has a High Card
+#Player 6 has a Pair
+PokerDealer_Fn(CCard2Values)
+#Player 1 has Three of a Kind
+#Player 2 has High Card
+#Player 3 has High Card
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has a Pair
+
+PokerDealer_Fn(PCard1Values)
+#Player 1 has High Card
+#Player 2 has a Pair
+#Player 3 has High Card
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has a Pair
+PokerDealer_Fn(PCard2Values)
+#Player 1 has High Card
+#Player 2 has High Card
+#Player 3 has High Card
+#Player 4 has High Card
+#Player 5 has a Pair
+#Player 6 has High Card
+PokerDealer_Fn(PCard3Values)
+#Player 1 has a Pair
+#Player 2 has a Pair
+#Player 3 has a Pair
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has High Card
+
+PokerDealer_Fn(RealCard1Values)
+#Player 1 has a Pair
+#Player 2 has High Card
+#Player 3 has High Card
+#Player 4 has a Pair
+#Player 5 has Two Pair
+#Player 6 has a Pair
+PokerDealer_Fn(RealCard2Values)
+#Player 1 has a Pair
+#Player 2 has Two Pair
+#Player 3 has a Pair
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has High Card
+PokerDealer_Fn(RealCard3Values)
+#Player 1 has High Card
+#Player 2 has High Card
+#Player 3 has a Pair
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has High Card
