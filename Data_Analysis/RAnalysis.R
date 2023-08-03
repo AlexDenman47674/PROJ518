@@ -1072,5 +1072,33 @@ PokerDealer_Fn <- function(InputDeck){
   Player5Hand <- c()
   Player6Hand <- c()
   
+  for (x in 1:5){
+    Player1Hand <- append(Player1Hand, InputDeck[1])
+    Player2Hand <- append(Player2Hand, InputDeck[2])
+    Player3Hand <- append(Player3Hand, InputDeck[3])
+    Player4Hand <- append(Player4Hand, InputDeck[4])
+    Player5Hand <- append(Player5Hand, InputDeck[5])
+    Player6Hand <- append(Player6Hand, InputDeck[6])
+    
+    for (i in 1:6){
+      InputDeck <- InputDeck[-1]
+    }
+  }
+  
+  print("Player Hands:")
+  print("Player 1:")
+  print(Player1Hand)
+  print("Player 2:")
+  print(Player2Hand)
+  print("Player 3:")
+  print(Player3Hand)
+  print("Player 4:")
+  print(Player4Hand)
+  print("Player 5:")
+  print(Player5Hand)
+  print("Player 6:")
+  print(Player6Hand)
   
 }
+
+PokerDealer_Fn(CCard1Values)
