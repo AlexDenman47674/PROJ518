@@ -1055,3 +1055,22 @@ ggplot(PokerTest_DF, aes(x = CardSources, y = CardOutcomes, fill = factor(HandOu
                       labels=c("Pair", "Two Pair","Three of a Kind","Full House", "Four of a Kind","Five of a Kind")) + 
   theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
   labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes")
+
+#6d) Poker Hand Distribution Simulation
+#The Poker Test performed above focused on comparing sequential groups of hands
+#In order to compare to a more accurate real world environment, this simulation aims to determine the probability of hand draws based on standard poker rules
+#This includes the dealing of cards to multiple players and a greater range of outcomes relating to the cards held in each players hand
+#To do this a function will be used that allows for the selection of a shuffled deck
+PokerDealer_Fn <- function(InputDeck){
+  #Once a deck is selected the 'Dealer' will distribute cards between 6 players
+  #As with the rules of poker, the 'Dealer' will deal 1 card to each 'Player' in turn and repeat until each player has a five card hand
+  #A 6 player game was chosen as this allows for 30 of the 52 cards in the deck to see play and 5-6 players make for the ideal game of poker
+  Player1Hand <- c()
+  Player2Hand <- c()
+  Player3Hand <- c()
+  Player4Hand <- c()
+  Player5Hand <- c()
+  Player6Hand <- c()
+  
+  
+}
