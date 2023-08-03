@@ -937,3 +937,53 @@ RealCard3PT <- RealCard3Values[-52]
 RealCard3PT <- RealCard3PT[-51]
 #RealCard3 removed 9 of Clubs and 3 of Hearts
 
+#To better automate this process a function will be used that allows for the choice of deck to be input
+PokerTest_function <- function(InputDeck) {
+  for (x in 1:10){
+    #The function will first empty the hand, then draw the first five cards from the input deck
+    TempHand <- c()
+    SpadeCount <- 0
+    HeartCount <- 0
+    ClubCount <- 0
+    DiamondCount <- 0
+    TempHand <- append(TempHand, InputDeck[1])
+    TempHand <- append(TempHand, InputDeck[2])
+    TempHand <- append(TempHand, InputDeck[3])
+    TempHand <- append(TempHand, InputDeck[4])
+    TempHand <- append(TempHand, InputDeck[5])
+    #The function will then identify the suit of each card
+    for (i in TempHand){
+      if (grepl("of Spades", i)) {
+        SpadeCount <- SpadeCount + 1
+      }else if (grepl("of Hearts", i)){
+        HeartCount <- HeartCount + 1
+      }else if (grepl("of Clubs", i)){
+        ClubCount <- ClubCount + 1
+      }else if (grepl("of Diamonds", i)){
+        DiamondCount <- DiamondCount + 1
+      }
+    }
+    #The function will then print the results
+    print(paste("Group", x))
+    print(paste("Number of Spades:", SpadeCount))
+    print(paste("Number of Hearts:", HeartCount))
+    print(paste("Number of Clubs:", ClubCount))
+    print(paste("Number of Diamonds:", DiamondCount))
+    #Finally the function will remove the first five cards from the deck
+    InputDeck <- InputDeck[-1]
+    InputDeck <- InputDeck[-1]
+    InputDeck <- InputDeck[-1]
+    InputDeck <- InputDeck[-1]
+    InputDeck <- InputDeck[-1]
+  }
+}
+PokerTest_function(CCard1PT)
+#The results of the PokerTest for CCard1:
+#Pair(Diamonds), Two Pair(Spades,Clubs), 3 of a kind(Clubs), Two Pair(Hearts,Clubs), 3 of a kind(Spades)
+#Two Pair(Spades,Hearts), Two Pair(Hearts,Diamonds), Two Pair(Spades,Clubs), Full House(Diamonds,Hearts), Two Pair(Hearts, Diamonds)
+PokerTest_function(CCard2PT)
+#The results of the PokerTest for CCard2:
+#Pair(Spades), 3 of a kind(Hearts), 3 of a kind(Diamonds), 3 of a kind(Clubs), Two Pair(Clubs,Diamonds)
+#Two Pair(Hearts,Clubs), Two Pair(Clubs,Diamonds), Two Pair(Spades,Hearts), Pair(Spades), Three of a kind(Spades)
+
+PokerTest_function(PCard1PT)
