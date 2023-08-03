@@ -744,3 +744,153 @@ GapPGroup_DF <- GapP_DF %>% group_by(GapPGroup)
 ggplot(GapPGroup_DF, aes(x = reorder(GapPGroup, -GapPValue), y = GapPValue, fill = GapPGroup)) + 
   geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
   labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Gap Test Data") + geom_text(aes(label = GapPValue, vjust = 1.2))
+
+#6a) Card Draw Distribution Visualisation
+#Retrieving the C# card draw data from the C# output
+setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
+CCard1Values <- fromJSON(file = "C#CardSim1.json")
+CCard2Values <- fromJSON(file = "C#CardSim2.json")
+
+setwd("D:/Github/PROJ518/Python_Rand_Function/Python_Output")
+PCard1Values <- fromJSON(file = "PythonCardSim1.json")
+PCard2Values <- fromJSON(file = "PythonCardSim2.json")
+PCard3Values <- fromJSON(file = "PythonCardSim3.json")
+
+setwd("D:/Github/PROJ518/Card_Draws")
+RealCard1Values <- fromJSON(file = "CardDraw1(Alex).json")
+RealCard2Values <- fromJSON(file = "CardDraw2(Ollie).json")
+RealCard3Values <- fromJSON(file = "CardDraw3(James).json")
+
+#In string form, the values given aren't suitable for visualisation
+#First the data can be sorted into the four suits (spades (1), hearts (2), clubs (3), diamonds (4))
+CardSuitGroup <- c()
+for (x in CCard1Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in CCard2Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in PCard1Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in PCard2Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in PCard3Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in RealCard1Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in RealCard2Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+for (x in RealCard3Values) {
+  if (grepl("of Spades", x)) {
+    CardSuitGroup <- append(CardSuitGroup, 1)
+  }else if (grepl("of Hearts", x)){
+    CardSuitGroup <- append(CardSuitGroup, 2)
+  }else if (grepl("of Clubs", x)){
+    CardSuitGroup <- append(CardSuitGroup, 3)
+  }else if (grepl("of Diamonds", x)){
+    CardSuitGroup <- append(CardSuitGroup, 4)
+  }
+}
+
+CardShuffleGroup <- c()
+CardPosition <- c()
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'C# Random')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'C# Seeded Random')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Python Randint')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Numpy Random')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Numpy Seeded Random')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Real Card Shuffle 1')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Real Card Shuffle 2')
+  CardPosition <- append(CardPosition, x)
+}
+for (x in 1:52) {
+  CardShuffleGroup <- append(CardShuffleGroup,'Real Card Shuffle 3')
+  CardPosition <- append(CardPosition, x)
+}
+
+CardSuit_DF <- data.frame(CardPosition, CardSuitGroup, CardShuffleGroup)
+print(CardSuit_DF)
+
+ggplot(CardSuit_DF, aes(x = CardShuffleGroup, y = CardPosition, colour = CardSuitGroup)) + 
+  geom_point(size = 3) + labs(x = "Data Sources", y = "Card Position", 
+                                                               color = "Suits", title = "A Scatterplot Showing the Distribution of Card Suits in Different Shuffle Methods")
