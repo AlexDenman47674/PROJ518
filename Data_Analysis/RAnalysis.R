@@ -896,9 +896,8 @@ ggplot(CardSuit_DF, aes(x = CardShuffleGroup, y = CardPosition, colour = CardSui
                                                                color = "Suits", title = "A Scatterplot Showing the Distribution of Card Suits in Different Shuffle Methods")
 #6b) The Poker Test of Card Draw Data
 #The Poker Test is designed to evaluate the patterns in n groups of 5 successive values, replicating possible poker hands
-#A standard game of poker is played with a deck of 52 cards, although some games play with 2 'wildcard' jokers that allow for five of a kind outcomes
 #The decks used for this test consist only of a traditional 52 cards, divided evenly into the four suits
-#The hands to be examined consist of either one pair, two pairs, three of a kind, full house (3 of a kind and a pair) or four of a kind
+#The hands to be examined consist of either one pair, two pairs, three of a kind, full house (3 of a kind and a pair), four of a kind or a flush/five of a kind
 #While in an actual game of poker other hands can be made that relate to the card value not just the suit for the sake of this test only the suit will be taken into account
 #In addition as this test compares successive groups of 5 cards and each deck contains 52 cards, cards 51 and 52 will be noted and excluded from testing
 #The suit of these cards will be taken into consideration and the probability of the respective suits will be adjusted accordingly
@@ -987,3 +986,28 @@ PokerTest_function(CCard2PT)
 #Two Pair(Hearts,Clubs), Two Pair(Clubs,Diamonds), Two Pair(Spades,Hearts), Pair(Spades), Three of a kind(Spades)
 
 PokerTest_function(PCard1PT)
+#The results of the PokerTest for PCard1:
+#3 of a kind(Clubs), Full House(Hearts,Spades), Two Pair(Spades,Diamonds), 3 of a kind(Clubs), Pair(Hearts)
+#Pair(Hearts), Pair(Hearts), Two Pair(Spades,Diamonds), Full House(Spades,Clubs), 4 of a kind(Diamonds)
+PokerTest_function(PCard2PT)
+#The results of the PokerTest for PCard2:
+#Two Pair(Spades,Diamonds), 3 of a kind(Hearts), 4 of a kind(Spades), 3 of a kind(Hearts), 3 of a kind(Spades)
+#Two Pair(Hearts, Diamonds), 3 of a kind(Diamonds), Two Pair(Hearts,Clubs), Full House(Diamonds,Clubs), 3 of a kind(Clubs)
+PokerTest_function(PCard3PT)
+#The results of the PokerTest for PCard3:
+#Two Pair(Clubs,Diamonds), Pair(Spades), Two Pair(Hearts,Diamonds), Two Pair(Spades,Hearts), Two Pair(Spades,Clubs)
+#Two Pair(Spades,Diamonds), Full House(Diamonds,Clubs), Pair(Hearts), 4 of a kind(Clubs), 4 of a kind(Hearts)
+
+PokerTest_function(RealCard1PT)
+#The results of the PokerTest for RealCard1:
+#4 of a kind(Hearts), Full House(Diamonds,Clubs), 3 of a kind(Diamonds), 5 of a kind(Clubs), Full House(Clubs,Diamonds)
+#4 of a kind(Hearts), 4 of a kind(Spades), 4 of a kind(Spades), 3 of a kind(Spades), Pair(Diamonds)
+PokerTest_function(RealCard2PT)
+#The results of the PokerTest for RealCard2:
+#Two Pair(Hearts,Diamonds), Two Pair(Spades, Hearts), Pair(Clubs), 4 of a kind(Diamonds), 3 of a kind(Spades)
+#3 of a kind(Hearts), Full House(Diamonds,Spades), Pair(Hearts), Full House(Clubs,Spades), 3 of a kind(Clubs)
+PokerTest_function(RealCard3PT)
+#The results of the PokerTest for RealCard3:
+#Full House(Clubs,Spades), 3 of a kind(Diamonds), 5 of a kind(Diamonds), 3 of a kind(Hearts), Two Pair(Spades,Clubs)
+#3 of a kind(Clubs), 4 of a kind(Hearts), 3 of a kind(Spades), 3 of a kind(Diamonds), Two Pair(Spades,Clubs)
+
