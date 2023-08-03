@@ -1072,13 +1072,6 @@ PokerDealer_Fn <- function(InputDeck){
   Player5Hand <- c()
   Player6Hand <- c()
   
-  Player1Outcome <- c()
-  Player2Outcome <- c()
-  Player3Outcome <- c()
-  Player4Outcome <- c()
-  Player5Outcome <- c()
-  Player6Outcome <- c()
-  
   for (x in 1:5){
     Player1Hand <- append(Player1Hand, InputDeck[1])
     Player2Hand <- append(Player2Hand, InputDeck[2])
@@ -1195,3 +1188,139 @@ ggplot(PokerDeal_DF, aes(x = CardDealSources, y = CardDealValues, fill = factor(
                       labels=c("High Card","Pair", "Two Pair","Three of a Kind")) + 
   theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
   labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes after non-sequential distribution")
+
+#6e) 'Texas Hold Em' Style Card Distribution
+#Similarly to the above simulation, this simulation aims to evaluate Poker hand outcomes when using a non-sequential distribution method
+#In Texas Hold Em each player is given a two card hand and five cards form a communal river
+#The flop (the starting 3 communal cards) are dealt after each players hand, then the remaining two cards (the turn and finally the river) are dealt after rounds of betting
+#As this is only a distribution simulation and no other cards can be dealt, all 5 communal cards will be dealt at once
+#Hands are decided using a combination of the player's hand and the river although hands can still only be five cards
+TexasDealer_Fn <- function(InputDeck){
+  Player1Hand <- c()
+  Player2Hand <- c()
+  Player3Hand <- c()
+  Player4Hand <- c()
+  Player5Hand <- c()
+  Player6Hand <- c()
+  TheRiver <- c()
+  
+  for (x in 1:2){
+    Player1Hand <- append(Player1Hand, InputDeck[1])
+    Player2Hand <- append(Player2Hand, InputDeck[2])
+    Player3Hand <- append(Player3Hand, InputDeck[3])
+    Player4Hand <- append(Player4Hand, InputDeck[4])
+    Player5Hand <- append(Player5Hand, InputDeck[5])
+    Player6Hand <- append(Player6Hand, InputDeck[6])
+    
+    for (i in 1:6){
+      InputDeck <- InputDeck[-1]
+    }
+  }
+  
+  for (x in 1:5){
+    TheRiver <- append(TheRiver, InputDeck[1])
+    InputDeck <- InputDeck[-1]
+  }
+  
+  print("Player Hands:")
+  print("Player 1:")
+  print(Player1Hand)
+  print("Player 2:")
+  print(Player2Hand)
+  print("Player 3:")
+  print(Player3Hand)
+  print("Player 4:")
+  print(Player4Hand)
+  print("Player 5:")
+  print(Player5Hand)
+  print("Player 6:")
+  print(Player6Hand)
+  print("The River")
+  print(TheRiver)
+}
+TexasDealer_Fn(CCard1Values)
+#Player 1 has a Pair
+#Player 2 has a Pair
+#Player 3 has Two Pair
+#Player 4 has a Pair
+#Player 5 has Three of a Kind
+#Player 6 has a Pair
+TexasDealer_Fn(CCard2Values)
+#Player 1 has a Pair
+#Player 2 has High Card
+#Player 3 has High Card
+#Player 4 has Two Pair
+#Player 5 has High Card
+#Player 6 has a Pair
+
+TexasDealer_Fn(PCard1Values)
+#Player 1 has a Pair
+#Player 2 has a Pair
+#Player 3 has a Pair
+#Player 4 has Two Pair
+#Player 5 has Three of a Kind
+#Player 6 has Two Pair
+TexasDealer_Fn(PCard2Values)
+#Player 1 has High Card
+#Player 2 has High Card
+#Player 3 has Two Pair
+#Player 4 has a Pair
+#Player 5 has a Flush
+#Player 6 has a Pair
+TexasDealer_Fn(PCard3Values)
+#Player 1 has a Pair
+#Player 2 has a Pair
+#Player 3 has High Card
+#Player 4 has a Pair
+#Player 5 has High Card
+#Player 6 has a Pair
+
+TexasDealer_Fn(RealCard1Values)
+#Player 1 has Two Pair
+#Player 2 has High Card
+#Player 3 has High Card
+#Player 4 has High Card
+#Player 5 has a Pair
+#Player 6 has High Card
+TexasDealer_Fn(RealCard2Values)
+#Player 1 has Two Pair
+#Player 2 has High Card
+#Player 3 has a Pair
+#Player 4 has High Card
+#Player 5 has a Pair
+#Player 6 has a Pair
+TexasDealer_Fn(RealCard3Values)
+#Player 1 has a Pair
+#Player 2 has a flush
+#Player 3 has a flush
+#Player 4 has a flush
+#Player 5 has a flush
+#Player 6 has a flush
+
+#Visualisation
+TexasDealValues <- c(0,4,1,1,0,3,2,1,0,0,0,4,2,1,0,2,2,1,0,1,2,4,0,0,0,4,1,1,0,0,2,3,1,0,0,0,1,0,0,5)
+TexasDealOutcomes <- c("High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush",
+                      "High Card","Pair","Two Pair","Three of a Kind","Flush")
+TexasDealSources <- c("C# Random","C# Random","C# Random","C# Random","C# Random",
+                     "C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random","C# Seeded Random",
+                     "Python Randint","Python Randint","Python Randint","Python Randint", "Python Randint",
+                     "Numpy Random","Numpy Random","Numpy Random","Numpy Random","Numpy Random",
+                     "Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random","Numpy Seeded Random",
+                     "Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1","Real Card Shuffle 1",
+                     "Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2","Real Card Shuffle 2",
+                     "Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3","Real Card Shuffle 3")
+TexasDeal_DF <- data.frame(TexasDealValues, TexasDealOutcomes, TexasDealSources)
+print(TexasDeal_DF)
+
+ggplot(TexasDeal_DF, aes(x = TexasDealSources, y = TexasDealValues, fill = factor(TexasDealOutcomes))) + 
+  geom_bar(stat = "identity", width=0.8, position="dodge") +
+  scale_fill_discrete(name="Possible Card Outcomes",breaks=c("High Card","Pair", "Two Pair", "Three of a Kind","Flush"),
+                      labels=c("High Card","Pair", "Two Pair","Three of a Kind","Flush")) + 
+  theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
+  labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes after alternative non-sequential distribution")
