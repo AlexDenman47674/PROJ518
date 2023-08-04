@@ -6,6 +6,7 @@ install.packages("dgof")
 install.packages("Rtools")
 install.packages("randtoolbox")
 install.packages("randtests")
+install.packages("EnvStats")
 
 library(rjson)
 library(plyr)
@@ -14,6 +15,7 @@ library(ggplot2)
 library(dgof)
 library(randtoolbox)
 library(randtests)
+library(EnvStats)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -1327,7 +1329,7 @@ ggplot(TexasDeal_DF, aes(x = TexasDealSources, y = TexasDealValues, fill = facto
   theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
   labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes after alternative non-sequential distribution")
 
-#7a) Run Test of C# Rand Data
+#7a) Run Test of Rand Data
 #The Runs Test examines sequences of random numbers for 'Runs Up' (Where the sequence increases) and 'Runs Down' (where the sequence decreases)
 #The P-Value generated is compared against a 0.05 significance level, if greater then the sequence can be considered random, if less then the sequence can be considered non-random
 #As this test can be used on any data set, no alterations need to be made to the data sequences used
@@ -1374,7 +1376,7 @@ print(runs.test(RoundaboutRandValues))
 print(runs.test(SeaRandValues))
 #SeaRand had a test statistic of -21.531 and a p-value of 2.2e-16
 
-#Visualisation
+#7b) Visualisation
 RunsPValue <- c(0.08693, 0.2243, 0.3229, 0.713, 0.6544, 0.5308, 0.9997, 0.3706, 0.3018, 0.05256, 0.7882, 0.04887, 0.7202, 0.6544)
 RunsPGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
                "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2")
@@ -1383,3 +1385,60 @@ RunsP_DF <- data.frame(RunsPValue, RunsPGroup)
 ggplot(RunsP_DF, aes(x = reorder(RunsPGroup, -RunsPValue), y = RunsPValue, fill = RunsPGroup)) + 
   geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
   labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Runs Test Data") + geom_text(aes(label = RunsPValue, vjust = -0.5))
+
+#8a) Serial Correlation Test of Rand Data
+#The Serial Correlation Test evaluates the serial correlation coefficient of a data set which is a measure of dependancy
+#Test Statistic values closer to 0 show that the data is relatively independent of each other
+serialCorrelationTest(CRand1Values)
+#CRand1 has a Test Statistic of 1.6 and a p-value of 0.11
+serialCorrelationTest(CRand2Values)
+#Crand2 has a Test Statistic of -0.84 and a p-value of 0.4
+serialCorrelationTest(CRand3Values)
+#CRand3 has a Test Statistic of -0.96 and a p-value of 0.34
+
+serialCorrelationTest(PRand1Values)
+#PRand1 has a Test Statistic of 0.68 and a p-value of 0.5
+serialCorrelationTest(PRand2Values)
+#PRand2 has a Test Statistic of -0.082 and a p-value of 0.93
+serialCorrelationTest(PRand3Values)
+#PRand3 has a Test Statistic of -0.43 and a p-value of 0.67
+serialCorrelationTest(PRand4Values)
+#PRand4 has a Test Statistic of 1.2 and a p-value of 0.24
+serialCorrelationTest(PRand5Values)
+#PRand5 has a Test Statistic of 1.8 and a p-value of 0.079
+
+serialCorrelationTest(JSRandValues)
+#JSRand has a Test Statistic of -0.7 and a p-value of 0.49
+
+serialCorrelationTest(RndRandValues)
+#RndRand has a Test Statistic of -2.9 and a p-value of 0.0039
+
+serialCorrelationTest(LehmerInt1Values)
+#LehmerInt1 has a Test Statistic of 0.6 and a p-value of 0.55
+serialCorrelationTest(LehmerInt2Values)
+#LehmerInt2 has a Test Statistic of -0.039 and a p-value of 0.97
+serialCorrelationTest(LehmerReal1Values)
+#LehmerReal1 has a Test Statistic of -0.14 and a p-value of 0.89
+serialCorrelationTest(LehmerReal2Values)
+#LehmerReal2 has a Test Statistic of 0.29 and a p-value of 0.78
+
+serialCorrelationTest(MSRandValues)
+#MSRand has a Test Statistic of 2.2 and a p-value of 0.025
+
+serialCorrelationTest(ParkRandValues)
+#ParkRand has a Test Statistic of -22 and a p-value of 0
+serialCorrelationTest(RoundaboutRandValues)
+#RoundaboutRand has a Test Statistic of -22 and a p-value of 0
+serialCorrelationTest(SeaRandValues)
+#SeaRand has a Test Statistic of -22 and a p-value of 0
+
+#8b) Visualisation
+SerialTValue <- c(1.6,-0.84,-0.96,0.68,-0.082,-0.43,1.2,1.8,-0.7,-2.9,0.6,-0.039,-0.14,0.29,2.2)
+SerialPValue <- c(0.11,0.4,0.34,0.5,0.93,0.67,0.24,0.079,0.49,0.0039,0.55,0.97,0.89,0.78,0.025)
+SerialTGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
+                "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2", "Middle Square Method")
+SerialT_DF <- data.frame(SerialTValue, SerialPValue, SerialTGroup)
+
+ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialPValue, colour = SerialTGroup, label=SerialTGroup)) + 
+  geom_point(size = 3) + geom_text(hjust=0.4, vjust=1.3) + labs(x = "Test Statistic", y = "P-Value", 
+                              title = "A Scatterplot Showing the Test Statistics and P-Values from Serial Correlation Testing") + theme(legend.position = "none")
