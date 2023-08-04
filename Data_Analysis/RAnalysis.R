@@ -1440,5 +1440,5 @@ SerialTGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Ran
 SerialT_DF <- data.frame(SerialTValue, SerialPValue, SerialTGroup)
 
 ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialPValue, colour = SerialTGroup, label=SerialTGroup)) + 
-  geom_point(size = 3) + geom_text(hjust=0.4, vjust=1.3) + labs(x = "Test Statistic", y = "P-Value", 
+  geom_point(size = 3) +geom_text(hjust=0.4, vjust=1.3) + labs(x = "Test Statistic", y = "P-Value", 
                               title = "A Scatterplot Showing the Test Statistics and P-Values from Serial Correlation Testing") + theme(legend.position = "none")
