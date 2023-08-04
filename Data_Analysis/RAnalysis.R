@@ -1374,3 +1374,12 @@ print(runs.test(RoundaboutRandValues))
 print(runs.test(SeaRandValues))
 #SeaRand had a test statistic of -21.531 and a p-value of 2.2e-16
 
+#Visualisation
+RunsPValue <- c(0.08693, 0.2243, 0.3229, 0.713, 0.6544, 0.5308, 0.9997, 0.3706, 0.3018, 0.05256, 0.7882, 0.04887, 0.7202, 0.6544)
+RunsPGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
+               "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2")
+RunsP_DF <- data.frame(RunsPValue, RunsPGroup)
+
+ggplot(RunsP_DF, aes(x = reorder(RunsPGroup, -RunsPValue), y = RunsPValue, fill = RunsPGroup)) + 
+  geom_bar(stat = "identity", width=0.5, position="dodge") + theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1),legend.position = "none") + 
+  labs(x = "Data Sources", y = "P-Values", title = "A Bar Chart Showing P-Values of Collected Runs Test Data") + geom_text(aes(label = RunsPValue, vjust = -0.5))
