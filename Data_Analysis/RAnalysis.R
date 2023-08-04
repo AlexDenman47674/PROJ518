@@ -5,6 +5,7 @@ install.packages("rjson")
 install.packages("dgof")
 install.packages("Rtools")
 install.packages("randtoolbox")
+install.packages("randtests")
 
 library(rjson)
 library(plyr)
@@ -12,6 +13,7 @@ library(dplyr)
 library(ggplot2)
 library(dgof)
 library(randtoolbox)
+library(randtests)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -1324,3 +1326,51 @@ ggplot(TexasDeal_DF, aes(x = TexasDealSources, y = TexasDealValues, fill = facto
                       labels=c("High Card","Pair", "Two Pair","Three of a Kind","Flush")) + 
   theme(axis.text.x = element_text(angle=90, vjust=.5, hjust=1)) +
   labs(x = "Data Sources", y = "Frequency", title = "A Barchart Showing the Frequency of Poker Hand Outcomes after alternative non-sequential distribution")
+
+#7a) Run Test of C# Rand Data
+#The Runs Test examines sequences of random numbers for 'Runs Up' (Where the sequence increases) and 'Runs Down' (where the sequence decreases)
+#The P-Value generated is compared against a 0.05 significance level, if greater then the sequence can be considered random, if less then the sequence can be considered non-random
+#As this test can be used on any data set, no alterations need to be made to the data sequences used
+print(runs.test(CRand1Values))
+#CRand1 had a test statistic of 1.7118 and a p-value of 0.08693
+print(runs.test(CRand2Values))
+#CRand2 had a test statistic of -1.2151 and a p-value of 0.2243
+print(runs.test(CRand3Values))
+#CRand3 had a test statistic of -0.98848 and a p-value of 0.3229
+
+print(runs.test(PRand1Values))
+#PRand1 had a test statistic of 0.36778 and a p-value of 0.713
+print(runs.test(PRand2Values))
+#PRand2 had a test statistic of 0.44766 and a p-value of 0.6544
+print(runs.test(PRand3Values))
+#PRand3 had a test statistic of -0.62673 and a p-value of 0.5308
+print(runs.test(PRand4Values))
+#PRand4 had a test statistic of 0.00036468 and a p-value of 0.9997
+print(runs.test(PRand5Values))
+#PRand5 had a test statistic of 0.89532 and a p-value of 0.3706
+
+print(runs.test(JSRandValues))
+#JSRand had a test statistic of -1.0326 and a p-value of 0.3018
+
+print(runs.test(RndRandValues))
+#RndRand had a test statistic of -1.9385 and a p-value of 0.05256
+
+print(runs.test(LehmerInt1Values))
+#LehmerInt1 had a test statistic of 0.2686 and a p-value of 0.7882
+print(runs.test(LehmerInt2Values))
+#LehmerInt2 had a test statistic of 1.9697 and a p-value of 0.04887
+print(runs.test(LehmerReal1Values))
+#LehmerReal1 had a test statistic of -0.35813 and a p-value of 0.7202
+print(runs.test(LehmerReal2Values))
+#LehmerReal2 had a test statistic of -0.44766 and a p-value of 0.6544
+
+print(runs.test(MSRandValues))
+#MSRand had a test statistic of 8.8831 and a p-value of 2.2e-16
+
+print(runs.test(ParkRandValues))
+#ParkRand had a test statistic of -20.951 and a p-value of 2.2e-16
+print(runs.test(RoundaboutRandValues))
+#RoundaboutRand had a test statistic of -20.454 and a p-value of 2.2e-16
+print(runs.test(SeaRandValues))
+#SeaRand had a test statistic of -21.531 and a p-value of 2.2e-16
+
