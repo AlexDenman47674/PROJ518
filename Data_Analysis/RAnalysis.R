@@ -1055,7 +1055,7 @@ CardSources <-c("C# Random","C# Random","C# Random","C# Random","C# Random","C# 
 PokerTest_DF <- data.frame(CardOutcomes, HandOutcomes, CardSources)
 print(PokerTest_DF)
 
-ggplot(PokerTest_DF, aes(x = CardSources, y = CardOutcomes, fill = factor(HandOutcomes))) + 
+ggplot(PokerTest_DF, aes(x = CardSources, y = CardOutcomes, fill = factor(HandOutcomes, levels = c("Pair", "Two Pair", "Three of a Kind", "Full House", "Four of a Kind", "Five of a Kind")))) + 
   geom_bar(stat = "identity", width=0.8, position="dodge") +
   scale_fill_discrete(name="Possible Card Outcomes",breaks=c("Pair", "Two Pair", "Three of a Kind", "Full House", "Four of a Kind", "Five of a Kind"),
                       labels=c("Pair", "Two Pair","Three of a Kind","Full House", "Four of a Kind","Five of a Kind")) + 
@@ -1188,7 +1188,7 @@ CardDealSources <- c("C# Random","C# Random","C# Random","C# Random",
 PokerDeal_DF <- data.frame(CardDealValues, CardDealOutcomes, CardDealSources)
 print(PokerDeal_DF)
 
-ggplot(PokerDeal_DF, aes(x = CardDealSources, y = CardDealValues, fill = factor(CardDealOutcomes))) + 
+ggplot(PokerDeal_DF, aes(x = CardDealSources, y = CardDealValues, fill = factor(CardDealOutcomes, levels = c("High Card","Pair", "Two Pair", "Three of a Kind")))) + 
   geom_bar(stat = "identity", width=0.8, position="dodge") +
   scale_fill_discrete(name="Possible Card Outcomes",breaks=c("High Card","Pair", "Two Pair", "Three of a Kind"),
                       labels=c("High Card","Pair", "Two Pair","Three of a Kind")) + 
@@ -1324,7 +1324,7 @@ TexasDealSources <- c("C# Random","C# Random","C# Random","C# Random","C# Random
 TexasDeal_DF <- data.frame(TexasDealValues, TexasDealOutcomes, TexasDealSources)
 print(TexasDeal_DF)
 
-ggplot(TexasDeal_DF, aes(x = TexasDealSources, y = TexasDealValues, fill = factor(TexasDealOutcomes))) + 
+ggplot(TexasDeal_DF, aes(x = TexasDealSources, y = TexasDealValues, fill = factor(TexasDealOutcomes, levels = c("High Card","Pair", "Two Pair", "Three of a Kind","Flush")))) + 
   geom_bar(stat = "identity", width=0.8, position="dodge") +
   scale_fill_discrete(name="Possible Card Outcomes",breaks=c("High Card","Pair", "Two Pair", "Three of a Kind","Flush"),
                       labels=c("High Card","Pair", "Two Pair","Three of a Kind","Flush")) + 
@@ -1523,7 +1523,9 @@ BirthdayGroup <- c("C# Rand",
                   "Sea White Noise")
 Birthday_DF <- data.frame(BirthdayStatValue, BirthdayResultValue, BirthdayGroup)
 
-ggplot(Birthday_DF, aes(x = BirthdayResultValue, y = BirthdayStatValue, fill = factor(BirthdayGroup))) + 
+ggplot(Birthday_DF, aes(x = BirthdayResultValue, y = BirthdayStatValue, fill = factor(BirthdayGroup, levels = c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                                                                                                                "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                                                                                                                "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise")))) + 
   geom_bar(stat = "identity", width=0.8, position="dodge") +
   scale_fill_discrete(name="Data Sources",breaks=c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
                                                    "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
