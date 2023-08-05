@@ -1499,3 +1499,36 @@ print(birthday.spacings(RoundaboutRandValues,m,n,alpha,lambda,num.class = 100))
 #RoundaboutRand had a Test Statistic of 16.73 and an AD result of 0
 print(birthday.spacings(SeaRandValues,m,n,alpha,lambda,num.class = 100))
 #SeaRand had a Test Statistic of 16.858 and an AD result of 0
+
+#9b) Visualisation
+BirthdayStatValue <- c(15.172,15.013,16.221,14.739,2,2,15.504,15.221,14.583,14.837,2,2,2,2,12.816,16.813,16.73,16.858)
+BirthdayResultValue <- c(0,0,0,0,1,1,0,0,0,0,1,1,1,1,0,0,0,0)
+BirthdayGroup <- c("C# Rand",
+                  "C# Seeded Rand",
+                  "C# Cryptographic Rand",
+                  "Python Randint",
+                  "Python Random",
+                  "Python Seeded Random",
+                  "Numpy Randint",
+                  "Numpy Seeded Randint",
+                  "JavaScript Rand",
+                  "Rand.Org Data",
+                  "Lehmer Int 1",
+                  "Lehmer Int 2",
+                  "Lehmer Real 1",
+                  "Lehmer Real 2", 
+                  "Middle Square Method",
+                  "Park White Noise",
+                  "Roundabout White Noise",
+                  "Sea White Noise")
+Birthday_DF <- data.frame(BirthdayStatValue, BirthdayResultValue, BirthdayGroup)
+
+ggplot(Birthday_DF, aes(x = BirthdayResultValue, y = BirthdayStatValue, fill = factor(BirthdayGroup))) + 
+  geom_bar(stat = "identity", width=0.8, position="dodge") +
+  scale_fill_discrete(name="Data Sources",breaks=c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                                                   "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                                                   "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise"),
+                      labels=c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                               "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                               "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise")) + 
+  labs(x = "Anderson-Darling Test Result", y = "Anderson-Darling Test Statistic", title = "A Barchart Showing the Results of the Birthday Spacings Test")
