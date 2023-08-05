@@ -7,6 +7,7 @@ install.packages("Rtools")
 install.packages("randtoolbox")
 install.packages("randtests")
 install.packages("EnvStats")
+install.packages("CryptRndTest")
 
 library(rjson)
 library(plyr)
@@ -16,6 +17,7 @@ library(dgof)
 library(randtoolbox)
 library(randtests)
 library(EnvStats)
+library(CryptRndTest)
 
 #The working directory is set to allow access to stored JSON files
 setwd("D:/Github/PROJ518/C#_Rand_Function/RandFunctionOutput")
@@ -1442,3 +1444,58 @@ SerialT_DF <- data.frame(SerialTValue, SerialPValue, SerialTGroup)
 ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialPValue, colour = SerialTGroup, label=SerialTGroup)) + 
   geom_point(size = 3) +geom_text(hjust=0.4, vjust=1.3) + labs(x = "Test Statistic", y = "P-Value", 
                               title = "A Scatterplot Showing the Test Statistics and P-Values from Serial Correlation Testing") + theme(legend.position = "none")
+
+#9a) Birthday Spacings Test of Rand Data
+#The Birthday Spacings Test works by choosing m birthdays from a year composed of n days then looking at the number of repetitions of spacing values 
+#The test evaluates the distribution of a data set and whether it fits a normal distribution
+#The Birthday Spacings Test provides results for KS distribution, Anderson-Darling distribution and Chi-Square distribution
+#The output to be represented is the Anderson-Darling Test Statistic and Result
+#A Result of 1 is considers the sequence to be a normal distribution, while a result of 0 is considered non-normal distribution
+#As the sequences being used are designed to replicate randomness, non-normal distribution is expected here
+B <- 16
+m <- 32
+n <- 2^B
+lambda <- (m^3)/(4*n)
+alpha <- 0.05
+print(birthday.spacings(CRand1Values,m,n,alpha,lambda,num.class = 100))
+#CRand1 had a Test Statistic of 15.172 and an AD result of 0
+print(birthday.spacings(CRand2Values,m,n,alpha,lambda,num.class = 100))
+#CRand2 had a Test Statistic of 15.013 and an AD result of 0
+print(birthday.spacings(CRand3Values,m,n,alpha,lambda,num.class = 100))
+#CRand3 had a Test Statistic of 16.221 and an AD result of 0
+
+print(birthday.spacings(PRand1Values,m,n,alpha,lambda,num.class = 100))
+#PRand1 had a Test Statistic of 14.739 and an AD result of 0
+print(birthday.spacings(PRand2Values,m,n,alpha,lambda,num.class = 100))
+#PRand2 had a Test Statistic of 2 and an AD result of 1
+print(birthday.spacings(PRand3Values,m,n,alpha,lambda,num.class = 100))
+#PRand3 had a Test Statistic of 2 and an AD result of 1
+print(birthday.spacings(PRand4Values,m,n,alpha,lambda,num.class = 100))
+#PRand4 had a Test Statistic of 15.504 and an AD result of 0
+print(birthday.spacings(PRand5Values,m,n,alpha,lambda,num.class = 100))
+#PRand5 had a Test Statistic of 15.221 and an AD result of 0
+
+print(birthday.spacings(JSRandValues,m,n,alpha,lambda,num.class = 100))
+#JSRand had a Test Statistic of 14.583 and an AD result of 0
+
+print(birthday.spacings(RndRandValues,m,n,alpha,lambda,num.class = 100))
+#RndRand had a Test Statistic of 14.837 and an AD result of 0
+
+print(birthday.spacings(LehmerInt1Values,m,n,alpha,lambda,num.class = 100))
+#LehmerInt1 had a Test Statistic of 2 and an AD result of 1
+print(birthday.spacings(LehmerInt2Values,m,n,alpha,lambda,num.class = 100))
+#LehmerInt2 had a Test Statistic of 2 and an AD result of 1
+print(birthday.spacings(LehmerReal1Values,m,n,alpha,lambda,num.class = 100))
+#LehmerReal1 had a Test Statistic of 2 and an AD result of 1
+print(birthday.spacings(LehmerReal2Values,m,n,alpha,lambda,num.class = 100))
+#LehmerReal2 had a Test Statistic of 2 and an AD result of 1
+
+print(birthday.spacings(MSRandValues,m,n,alpha,lambda,num.class = 100))
+#MSRand had a Test Statistic of 12.816 and an AD result of 0
+
+print(birthday.spacings(ParkRandValues,m,n,alpha,lambda,num.class = 100))
+#ParkRand had a Test Statistic of 16.813 and an AD result of 0
+print(birthday.spacings(RoundaboutRandValues,m,n,alpha,lambda,num.class = 100))
+#RoundaboutRand had a Test Statistic of 16.73 and an AD result of 0
+print(birthday.spacings(SeaRandValues,m,n,alpha,lambda,num.class = 100))
+#SeaRand had a Test Statistic of 16.858 and an AD result of 0
