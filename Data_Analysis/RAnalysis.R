@@ -1436,12 +1436,12 @@ serialCorrelationTest(SeaRandValues)
 
 #8b) Visualisation
 SerialTValue <- c(1.6,-0.84,-0.96,0.68,-0.082,-0.43,1.2,1.8,-0.7,-2.9,0.6,-0.039,-0.14,0.29,2.2)
-SerialPValue <- c(0.11,0.4,0.34,0.5,0.93,0.67,0.24,0.079,0.49,0.0039,0.55,0.97,0.89,0.78,0.025)
+SerialTPValue <- c(0.11,0.4,0.34,0.5,0.93,0.67,0.24,0.079,0.49,0.0039,0.55,0.97,0.89,0.78,0.025)
 SerialTGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
                 "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2", "Middle Square Method")
-SerialT_DF <- data.frame(SerialTValue, SerialPValue, SerialTGroup)
+SerialT_DF <- data.frame(SerialTValue, SerialTPValue, SerialTGroup)
 
-ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialPValue, colour = SerialTGroup, label=SerialTGroup)) + 
+ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialTPValue, colour = SerialTGroup, label=SerialTGroup)) + 
   geom_point(size = 3) +geom_text(hjust=0.4, vjust=1.3) + labs(x = "Test Statistic", y = "P-Value", 
                               title = "A Scatterplot Showing the Test Statistics and P-Values from Serial Correlation Testing") + theme(legend.position = "none")
 
@@ -1532,3 +1532,36 @@ ggplot(Birthday_DF, aes(x = BirthdayResultValue, y = BirthdayStatValue, fill = f
                                "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
                                "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise")) + 
   labs(x = "Anderson-Darling Test Result", y = "Anderson-Darling Test Statistic", title = "A Barchart Showing the Results of the Birthday Spacings Test")
+
+#10) Visualisation of P-Values
+RandDataPValues <- c()
+RandDataPValues <- append(RandDataPValues, SerialPValue)
+RandDataPValues <- append(RandDataPValues, GapPValue)
+RandDataPValues <- append(RandDataPValues, RunsPValue)
+RandDataPValues <- append(RandDataPValues, SerialTPValue)
+
+RandDataPGroups <- c()
+RandDataPGroups <- append(RandDataPGroups, SerialPGroup)
+RandDataPGroups <- append(RandDataPGroups, GapPGroup)
+RandDataPGroups <- append(RandDataPGroups, RunsPGroup)
+RandDataPGroups <- append(RandDataPGroups, SerialTGroup)
+
+RandDataPTests <- c("Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test","Serial Test",
+                    "Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test","Gap Test",
+                    "Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test","Runs Test",
+                    "Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test",
+                    "Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test","Serial Correlation Test", "Serial Correlation Test")
+
+RandDataP_DF <- data.frame(RandDataPValues, RandDataPGroups, RandDataPTests)
+
+ggplot(RandDataP_DF, aes(x = RandDataPTests, y = RandDataPValues, fill = factor(RandDataPGroups,levels = c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                                                                                                           "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                                                                                                           "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise"), ordered = TRUE))) + 
+  geom_bar(stat = "identity", width=0.8, position="dodge") +
+  scale_fill_discrete(name="Data Sources",breaks=c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                                                   "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                                                   "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise"),
+                      labels=c("C# Rand", "C# Seeded Rand", "C# Cryptographic Rand", "Python Randint", "Python Random", "Python Seeded Random",
+                               "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
+                               "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise")) + 
+  labs(x = "Statistical Tests Performed", y = "P-Values", title = "A Barchart Showing all collected P-Values of the Rand Data Sources")
