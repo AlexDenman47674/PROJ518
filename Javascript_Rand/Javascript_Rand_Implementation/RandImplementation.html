@@ -20,7 +20,7 @@
 const OutputValues = [];
 for (let i = 1; i <= 500; i++) {
   
-    OutputValues.push(Math.floor(Math.random() * 100) + 1);
+    OutputValues.push(Math.floor(Math.random() * 101));
 }
 
 let text = "<ul>";
@@ -43,7 +43,7 @@ console.log(JSON.stringify(CoinSimValues));
 const DiceSimValues = [];
 for (let i = 1; i <= 500; i++) {
   
-  DiceSimValues.push(Math.round(Math.random() * 5) + 1);
+  DiceSimValues.push(Math.floor(Math.random() * 6) + 1);
 }
 
 console.log(JSON.stringify(DiceSimValues));
