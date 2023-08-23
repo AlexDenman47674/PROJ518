@@ -55,8 +55,8 @@ RealDiceValues <- fromJSON(file = "DiceRolls.json")
 print(RealDiceValues)
 
 #Chi-Squared Test
-#Due to the nature of the data provided for coin flips, dice rolls and card draws, the chi-squared test can be used to help determine randomness
-#In these tests all three pseudorandom algorithms from C#, Python and JavaScript will be compared against the physical dice roll data
+#Due to the nature of the data provided for coin flips and dice rolls, the chi-squared test can be used to help determine randomness
+#In these tests all three pseudorandom algorithms from C#, Python and JavaScript will be compared against the physical dice roll and coin flip data
 #This test will be run as seen in D Knuth's 'The Art of Computer Programming Volume 2: Seminumerical Algorithms'
 
 #1a) Dice Rolls
