@@ -235,11 +235,13 @@ PDice3Freq <- PDice3[,2]
 JSDiceFreq <- JSDice[,2]
 RndDiceFreq <- RndDice[,2]
 RealDiceFreq <- RealDice[,2]
-DiceFreq <- c(CDice1Freq,CDice2Freq, PDice1Freq, PDice2Freq, PDice3Freq, JSDiceFreq, RndDiceFreq, RealDiceFreq)
+ExpectedFreq <- c(83, 83, 83, 83, 83, 83)
+DiceFreq <- c(CDice1Freq,CDice2Freq, PDice1Freq, PDice2Freq, PDice3Freq, JSDiceFreq, RndDiceFreq, RealDiceFreq, ExpectedFreq)
 print(DiceFreq)
-DiceOutcomes <- c(1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6)
+DiceOutcomes <- c(1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6,1,2,3,4,5,6)
 DiceGroup <- c("C1","C1","C1","C1","C1","C1","C2","C2","C2","C2","C2","C2","P1","P1","P1","P1","P1","P1","P2","P2","P2","P2","P2","P2",
-               "P3","P3","P3","P3","P3","P3","JS","JS","JS","JS","JS","JS","Rnd","Rnd","Rnd","Rnd","Rnd","Rnd","Real","Real","Real","Real","Real","Real")
+               "P3","P3","P3","P3","P3","P3","JS","JS","JS","JS","JS","JS","Rnd","Rnd","Rnd","Rnd","Rnd","Rnd","Real","Real","Real","Real","Real","Real",
+               "Expected","Expected","Expected","Expected","Expected","Expected")
 Dice_DF <- data.frame(DiceOutcomes, DiceGroup, DiceFreq)
 print(Dice_DF)
 
@@ -259,11 +261,12 @@ PCoin3Freq <- PCoin3[,2]
 JSCoinFreq <- JSCoin[,2]
 RndCoinFreq <- RndCoin[,2]
 RealCoinFreq <- RealCoin[,2]
-CoinFreq <- c(CCoin1Freq, CCoin2Freq, PCoin1Freq, PCoin2Freq, PCoin3Freq, JSCoinFreq, RndCoinFreq, RealCoinFreq)
+ExpectedFreq <- c(250,250)
+CoinFreq <- c(CCoin1Freq, CCoin2Freq, PCoin1Freq, PCoin2Freq, PCoin3Freq, JSCoinFreq, RndCoinFreq, RealCoinFreq, ExpectedFreq)
 print(CoinFreq)
-CoinOutcomes <- c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)
+CoinOutcomes <- c(0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1)
 CoinGroup <- c("C1","C1","C2","C2","P1","P1","P2","P2","P3",
-               "P3","JS","JS","Rnd","Rnd","Real","Real")
+               "P3","JS","JS","Rnd","Rnd","Real","Real","Expected","Expected")
 Coin_DF <- data.frame(CoinOutcomes, CoinGroup, CoinFreq)
 print(Coin_DF)
 
@@ -660,9 +663,9 @@ print(serial.test(SeaRandValues/100, d=2))
 #4h) Visualisation
 #Some p-values presented were considered to be anomalous either due to the nature or faults of the generators in question
 #Therefore when visualising the data these generators were removed to allow for a more balanced overview
-SerialPValue <- c(0.76,0.69,0.14,0.27,0.03,0.43,0.7,0.17,0.33,0.28,0.95)
+SerialPValue <- c(0.76,0.69,0.14,0.27,0.03,0.43,0.7,0.17,0.33,0.28,0.95, 0.5)
 SerialPGroup <- c("C# Rand","C# Seeded Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-                  "JavaScript Rand","Rand.Org Data","Lehmer Real 1","Lehmer Real 2")
+                  "JavaScript Rand","Rand.Org Data","Lehmer Real 1","Lehmer Real 2","Expected")
 SerialP_DF <- data.frame(SerialPValue, SerialPGroup)
 SerialPGroup_DF <- SerialP_DF %>% group_by(SerialPGroup)
 
@@ -740,9 +743,9 @@ print(gap.test(SeaRandValues/100))
 #The observed frequencies were 1, 0, 1, 0, 0, 0, 0, 0, 0, 0
 
 #5h) Visualisation
-GapPValue <- c(0.3,0.12,0.00023,0.8,0.56,0.73,0.6,0.22,0.67,0.042,0.0012,0.036,0.85)
+GapPValue <- c(0.3,0.12,0.00023,0.8,0.56,0.73,0.6,0.22,0.67,0.042,0.0012,0.036,0.85, 0.5)
 GapPGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-                  "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Real 1","Lehmer Real 2")
+                  "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Real 1","Lehmer Real 2","Expected")
 
 GapP_DF <- data.frame(GapPValue, GapPGroup)
 GapPGroup_DF <- GapP_DF %>% group_by(GapPGroup)
@@ -1379,9 +1382,9 @@ print(runs.test(SeaRandValues))
 #SeaRand had a test statistic of -21.531 and a p-value of 2.2e-16
 
 #7b) Visualisation
-RunsPValue <- c(0.08693, 0.2243, 0.3229, 0.713, 0.6544, 0.5308, 0.9997, 0.3706, 0.3018, 0.05256, 0.7882, 0.04887, 0.7202, 0.6544)
+RunsPValue <- c(0.08693, 0.2243, 0.3229, 0.713, 0.6544, 0.5308, 0.9997, 0.3706, 0.3018, 0.05256, 0.7882, 0.04887, 0.7202, 0.6544, 0.05)
 RunsPGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-               "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2")
+               "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2","Expected")
 RunsP_DF <- data.frame(RunsPValue, RunsPGroup)
 
 ggplot(RunsP_DF, aes(x = reorder(RunsPGroup, -RunsPValue), y = RunsPValue, fill = RunsPGroup)) + 
@@ -1435,10 +1438,10 @@ serialCorrelationTest(SeaRandValues)
 #SeaRand has a Test Statistic of -22 and a p-value of 0
 
 #8b) Visualisation
-SerialTValue <- c(1.6,-0.84,-0.96,0.68,-0.082,-0.43,1.2,1.8,-0.7,-2.9,0.6,-0.039,-0.14,0.29,2.2)
-SerialTPValue <- c(0.11,0.4,0.34,0.5,0.93,0.67,0.24,0.079,0.49,0.0039,0.55,0.97,0.89,0.78,0.025)
+SerialTValue <- c(1.6,-0.84,-0.96,0.68,-0.082,-0.43,1.2,1.8,-0.7,-2.9,0.6,-0.039,-0.14,0.29,2.2,0)
+SerialTPValue <- c(0.11,0.4,0.34,0.5,0.93,0.67,0.24,0.079,0.49,0.0039,0.55,0.97,0.89,0.78,0.025,0.5)
 SerialTGroup <- c("C# Rand","C# Seeded Rand","C# Cryptographic Rand","Python Randint","Python Random","Python Seeded Random","Numpy Randint","Numpy Seeded Randint",
-                "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2", "Middle Square Method")
+                "JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2","Lehmer Real 1","Lehmer Real 2", "Middle Square Method","Expected")
 SerialT_DF <- data.frame(SerialTValue, SerialTPValue, SerialTGroup)
 
 ggplot(SerialT_DF, aes(x = SerialTValue, y = SerialTPValue, colour = SerialTGroup, label=SerialTGroup)) + 
@@ -1567,3 +1570,4 @@ ggplot(RandDataP_DF, aes(x = RandDataPTests, y = RandDataPValues, fill = factor(
                                "Numpy Randint","Numpy Seeded Randint","JavaScript Rand","Rand.Org Data","Lehmer Int 1","Lehmer Int 2",
                                "Lehmer Real 1","Lehmer Real 2","Middle Square Method","Park White Noise","Roundabout White Noise","Sea White Noise")) + 
   labs(x = "Statistical Tests Performed", y = "P-Values", title = "A Barchart Showing all collected P-Values of the Rand Data Sources")
+
