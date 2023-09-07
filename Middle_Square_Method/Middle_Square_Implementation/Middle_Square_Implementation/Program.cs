@@ -32,11 +32,11 @@ namespace Middle_Square_Implementation
                 value = value * value;
                 valueLength = value.ToString().Length;
 
-                //Middle values cannot be extracted from even length squares
-                //Padding using 0 to make the length odd is required for successful generation
+                //Middle values cannot be extracted from odd length squares
+                //Padding using 0 to make the length even is required for successful generation
                 valueString = Convert.ToString(value);
 
-                if (valueLength % 2 == 0)
+                if (valueLength % 2 != 0)
                 {
                     valueString = valueString.Insert(0, "0");
                     valueLength = valueString.Length;
@@ -49,7 +49,7 @@ namespace Middle_Square_Implementation
 
                 //All generated values are stored in the ReturnValues list
                 //On inspection of the outputs given, the flaws of this algorithm become clear
-                //Repetitions begin with this seed after just 9 iterations
+                //Repetitions begin with this seed after just 11 iterations
                 ReturnValues.Add(valueMiddle);
 
                 value = valueMiddle;
